@@ -1,70 +1,96 @@
-﻿# Amigos da Vênus 🐈‍⬛ 🌿🌊
 
-Guia independente de apoio à pesquisa de hospedagens no litoral sul da Paraíba.
+# Amigos da Vênus 🐈‍⬛ 🌿🌊
 
-## Versão atual
+<p align="center">
+  <img src="./icons/amigos-venus-logo-original.jpg" alt="Amigos da Vênus - gatinha descansando na rede" width="420">
+</p>
 
-**V8.4**
+<p align="center">
+  <strong>Um cantinho para ajudar amigos a encontrarem outros cantinhos. 🌿☀️</strong>
+</p>
 
-## Como funciona
+---
 
-1. A **Casa de Praia Vênus** aparece primeiro.
-2. Se não houver disponibilidade, o guia apresenta outras opções.
-3. A reserva, o pagamento e a confirmação dos dados continuam sempre na fonte original.
+## Sobre
 
-## Recursos
+Com o mesmo intuito do **Guia da Vênus**, o **Amigos da Vênus** foi criado pensando nos nossos amigos que vêm de outros estados e querem passar uma temporada na cidade onde o sol nasce mais cedo.
 
-- PWA instalável;
-- funcionamento offline após o primeiro acesso;
-- indicador online/offline;
-- mapa esquemático por regiões;
-- filtros rápidos e avançados;
-- favoritos locais;
-- cards com miniaturas quando a fonte disponibiliza imagem pública;
-- lazy loading de imagens;
-- detalhes com alto contraste;
-- compartilhamento nativo do celular;
-- botão direto para a fonte original;
-- agrupamento entre perfis oficiais e anúncios em plataformas;
-- resumo por tipo de hospedagem;
-- botão voltar ao topo;
-- suporte a redução de movimento;
-- foco visível e atalhos de acessibilidade;
-- preview social para WhatsApp e redes;
-- arquivo `version.json`;
-- rotina `scripts/verificar_links.ps1` para ajudar na manutenção.
+Com a alta procura por imóveis para aluguel de temporada e a grande quantidade de sites com esse propósito, pensamos em uma forma de **facilitar e organizar essa busca**.
 
-## Foto principal da Casa de Praia Vênus
+E, claro, se a **Casa de Praia Vênus** não estiver disponível, não vamos deixar ninguém na mão. Afinal, o que vale é **curtir a vida, aproveitar bons momentos e ajudar o próximo**.
 
-Se existir:
+Por isso, a proposta do projeto é ser um guia **simples, leve e acolhedor**, reunindo opções de hospedagens para pesquisa e direcionando sempre para a **fonte original** do anúncio ou perfil, onde cada pessoa pode confirmar disponibilidade, valores e demais informações.
 
-`icons/casa-venus-destaque.jpg`
+A ideia é que o **Amigos da Vênus** funcione como aquele amigo que diz:
 
-ela é usada como foto principal.
+> **“A Vênus está ocupada, mas calma que eu te ajudo a encontrar outro cantinho.”**
 
-Caso o arquivo não exista, o aplicativo usa o logotipo como fallback.
+---
 
-## Manutenção dos links
+## 🌿 Como funciona
 
-Execute:
+1. A **Casa de Praia Vênus** é sempre a nossa primeira opção.
+2. Se não houver disponibilidade, o guia apresenta outras hospedagens.
+3. Você pode comparar regiões, capacidade e características.
+4. Encontrou uma opção interessante? É só acessar a **fonte original**.
+5. Disponibilidade, valores, regras e demais informações são confirmados diretamente com a hospedagem ou plataforma.
 
-```powershell
-powershell -ExecutionPolicy Bypass -File ".\scripts\verificar_links.ps1"
-```
+---
 
-Será criado o arquivo `LINKS_A_REVISAR.md`.
+## ☀️ A proposta
 
-A verificação automática é apenas um apoio: algumas plataformas podem bloquear requisições automatizadas mesmo quando o anúncio continua funcionando normalmente.
+O Amigos da Vênus não nasceu para ser mais um site de reservas.
 
-## Independência
+A ideia é tornar a procura por hospedagem um pouco mais simples, reunindo em um único lugar algumas opções que podem ajudar quem vem conhecer João Pessoa e o litoral sul da Paraíba.
 
-O Amigos da Vênus:
-- não realiza reservas;
-- não recebe pagamentos;
-- não intermedeia contratos;
-- não garante disponibilidade;
-- não possui vínculo comercial com hospedagens alternativas, salvo quando isso estiver expressamente indicado.
+Tudo com a mesma energia que inspira a Vênus:
 
-## Produção
+**leveza, acolhimento, natureza, boas energias e vontade de ajudar.**
 
-https://temporada-pb.vercel.app/
+---
+
+## 🏡 O que você encontra
+
+- Casa de Praia Vênus em primeiro lugar;
+- outras opções de hospedagem;
+- casas, apartamentos e estúdios;
+- busca por região;
+- filtros simples;
+- favoritos;
+- perfis oficiais e anúncios em plataformas;
+- acesso direto à fonte original;
+- funcionamento adaptado para celular;
+- possibilidade de instalar como aplicativo.
+
+---
+
+## 🌊 Importante
+
+O **Amigos da Vênus** é um guia independente de apoio à pesquisa.
+
+Não realizamos reservas, não recebemos pagamentos e não intermediamos contratos.
+
+As hospedagens alternativas não possuem vínculo comercial com a **Casa de Praia Vênus** ou com o **Amigos da Vênus**, salvo quando isso estiver expressamente informado.
+
+Quando alguma informação não estiver disponível no guia, ela deve ser confirmada diretamente com a hospedagem ou na fonte original.
+
+---
+
+## 📱 Conheça o Amigos da Vênus
+
+👉 **https://temporada-pb.vercel.app/**
+
+Pode abrir pelo celular e, em navegadores compatíveis, instalar como aplicativo.
+
+---
+
+## 💛 Feito com boas energias
+
+Um projeto criado para facilitar a vida de quem vem de longe, conhecer novos lugares e aproveitar bons momentos.
+
+**Amigos da Vênus**  
+Porque, se a Vênus estiver ocupada, a gente ajuda você a encontrar outro cantinho. 🌿🌊🐈‍⬛
+
+---
+
+**Desenvolvido por Priscilla Cahino**
