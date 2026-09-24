@@ -1,7 +1,7 @@
 ﻿{
     "name":  "Amigos da Vênus",
     "short_name":  "Amigos Vênus",
-    "description":  "Guia acolhedor para ajudar quem não encontrou disponibilidade na Casa de Praia Vênus a pesquisar outras hospedagens.",
+    "description":  "Guia independente para pesquisar hospedagens no litoral sul da Paraíba, com a Casa de Praia Vênus como primeira referência.",
     "start_url":  "./",
     "scope":  "./",
     "display":  "standalone",

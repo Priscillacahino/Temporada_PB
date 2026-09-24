@@ -1,12 +1,12 @@
-{
-  "versao": "8.0",
-  "ultimaAtualizacao": "2026-09-24",
-  "totalRegistros": 27,
-  "politicaRevisao": {
-    "revisarAposDias": 30,
-    "desatualizadoAposDias": 60
-  },
-  "observacao": "A Casa de Praia Vênus é a primeira opção de referência. Os 27 registros da base são alternativas independentes de pesquisa; o status é calculado a partir da última verificação pública.",
-  "nomeProjeto": "Amigos da Vênus",
-  "hospedagemReferencia": "Casa de Praia Vênus"
+﻿{
+    "versao":  "8.4",
+    "ultimaAtualizacao":  "2026-09-24",
+    "totalRegistros":  27,
+    "politicaRevisao":  {
+                            "revisarAposDias":  30,
+                            "desatualizadoAposDias":  60
+                        },
+    "observacao":  "Casa de Praia Vênus em primeiro lugar; filtros progressivos; mapa recolhível; resultados agrupados por origem; compartilhamento; acessibilidade; offline aprimorado; SEO social e controle de versão.",
+    "nomeProjeto":  "Amigos da Vênus",
+    "hospedagemReferencia":  "Casa de Praia Vênus"
 }

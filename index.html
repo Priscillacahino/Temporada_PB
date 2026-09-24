@@ -4,75 +4,162 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#6f8066">
-  <meta name="description" content="Guia independente de hospedagens de curta temporada no eixo João Pessoa–Conde.">
+  <meta name="description" content="Amigos da Vênus: guia independente para ajudar quem não encontrou disponibilidade na Casa de Praia Vênus a pesquisar outras hospedagens no litoral sul da Paraíba.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Amigos da Vênus — Guia de hospedagens">
+  <meta property="og:description" content="Não conseguiu ficar na Casa de Praia Vênus? Compare outras hospedagens e confirme tudo diretamente na fonte original.">
+  <meta property="og:url" content="https://temporada-pb.vercel.app/">
+  <meta property="og:image" content="https://temporada-pb.vercel.app/icons/icon-512.png">
+  <meta property="og:locale" content="pt_BR">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Amigos da Vênus">
+  <meta name="twitter:description" content="Guia independente de hospedagens no litoral sul da Paraíba.">
+  <meta name="twitter:image" content="https://temporada-pb.vercel.app/icons/icon-512.png">
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Amigos da Vênus">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="styles.css">
+
   <title>Amigos da Vênus</title>
 </head>
+
 <body id="top">
+
+<a class="skip-link" href="#resultsStart">Pular para as hospedagens</a>
+
+<div id="offlineBanner" class="offline-banner hidden" role="status" aria-live="polite">
+  Você está offline. Exibindo as informações salvas da última visita.
+</div>
+
 <header class="hero">
   <div class="topbar">
     <a class="brand" href="#top" aria-label="Amigos da Vênus, início">
-      <img class="brand-logo" src="icons/icon-192.png" alt="Logotipo Amigos da Vênus"><span>Amigos da Vênus</span><small>V8</small>
+      <img class="brand-logo" src="icons/icon-192.png" alt="Logotipo Amigos da Vênus" width="46" height="46">
+      <span>Amigos da Vênus</span>
+      <small>V8.4</small>
     </a>
+
     <div class="top-actions">
       <span id="networkBadge" class="network online">● Online</span>
       <button id="installBtn" class="ghost hidden" type="button">Instalar app</button>
     </div>
   </div>
+
   <div class="hero-layout">
     <div class="hero-copy">
       <span class="eyebrow light">João Pessoa → Litoral Sul → Conde</span>
-      <h1>Hospedagens de temporada no caminho certo.</h1>
-      <p>Pesquise casas, apartamentos e estúdios por região, capacidade e comodidades. A reserva continua sempre na fonte original.</p>
-      <div class="hero-actions"><a href="#filtersSection" class="primary-link">Encontrar hospedagem</a><a href="#mapSection" class="secondary-link">Explorar corredor</a></div>
+      <h1>Não conseguiu ficar na Vênus? Encontre outro cantinho por aqui.</h1>
+      <p>Primeiro, confira a Casa de Praia Vênus. Se não houver disponibilidade, compare outras opções e confirme tudo diretamente na fonte original.</p>
+
+      <div class="hero-actions">
+        <a href="#venusFirst" class="primary-link">Ver a primeira opção</a>
+        <a href="#resultsStart" class="secondary-link">Ver outras opções</a>
+        <button id="howBtn" class="secondary-link hero-button" type="button">Como funciona?</button>
+      </div>
     </div>
+
     <div class="hero-card" aria-label="Resumo da base">
-      <span class="mini-label">Base V7</span>
-      <strong id="heroTotal">27</strong><span>hospedagens verificadas</span>
-      <div class="hero-card-line"><span>✓</span><span>Sem pagamento ou reserva no guia</span></div>
-      <div class="hero-card-line"><span>✓</span><span>Links para a fonte original</span></div>
+      <span class="mini-label">Amigos da Vênus · V8.4</span>
+      <strong id="heroTotal">27</strong>
+      <span>alternativas cadastradas</span>
+      <div class="hero-card-line"><span>1</span><span>Vênus aparece primeiro</span></div>
+      <div class="hero-card-line"><span>2</span><span>As demais levam à fonte original</span></div>
     </div>
   </div>
 </header>
 
 <main>
-  <section class="maintenance-strip" aria-label="Estado da base">
-    <div><span class="status-dot active-dot"></span><b id="activeCount">0</b><span>em dia</span></div>
-    <div><span class="status-dot review-dot"></span><b id="reviewCount">0</b><span>revisar</span></div>
-    <div><span class="status-dot stale-dot"></span><b id="staleCount">0</b><span>desatualizados</span></div>
-    <p id="maintenanceText">A base é monitorada pela data da última verificação.</p>
+  <section class="maintenance-strip" aria-label="Atualização da base">
+    <div><span class="status-dot active-dot"></span><b id="activeCount">0</b><span>conferidas</span></div>
+    <div><span class="status-dot review-dot"></span><b id="reviewCount">0</b><span>para revisar</span></div>
+    <div><span class="status-dot stale-dot"></span><b id="staleCount">0</b><span>desatualizadas</span></div>
+    <p id="maintenanceText">A base acompanha a data da última conferência.</p>
+  </section>
+
+  <section id="venusFirst" class="venus-first" aria-labelledby="venusFirstTitle">
+    <div class="venus-first-media">
+      <img id="venusMainImage"
+           src="icons/casa-venus-destaque.jpg"
+           alt="Casa de Praia Vênus"
+           width="900"
+           height="600"
+           decoding="async"
+           fetchpriority="high"
+           onerror="this.onerror=null;this.src='icons/icon-512.png'">
+      <span class="first-badge">Nossa primeira opção</span>
+    </div>
+
+    <div class="venus-first-copy">
+      <span class="eyebrow">Comece por aqui</span>
+      <h2 id="venusFirstTitle">Casa de Praia Vênus</h2>
+      <p>Se houver disponibilidade para sua data, essa é a primeira opção do guia. Se estiver ocupada, continue e veja outras hospedagens que podem atender você.</p>
+
+      <div class="venus-first-actions">
+        <a href="https://www.instagram.com/venuscasadepraiapb/" target="_blank" rel="noopener" class="venus-primary">Ver Casa de Praia Vênus ↗</a>
+        <a href="#resultsStart" class="venus-secondary">Ver alternativas</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-strip" aria-label="Como funciona">
+    <div><b>1</b><span>Confira a Vênus</span></div>
+    <div><b>2</b><span>Compare alternativas</span></div>
+    <div><b>3</b><span>Confirme na fonte original</span></div>
+  </section>
+
+  <section class="summary-strip" aria-label="Resumo das hospedagens">
+    <div><b id="countHouse">0</b><span>casas</span></div>
+    <div><b id="countApartment">0</b><span>apartamentos</span></div>
+    <div><b id="countStudio">0</b><span>estúdios</span></div>
+    <div><b id="countOfficial">0</b><span>perfis oficiais</span></div>
   </section>
 
   <section id="mapSection" class="panel map-panel" aria-labelledby="mapTitle">
     <div class="section-head">
-      <div><span class="eyebrow">Mapa do corredor</span><h2 id="mapTitle">Do José Américo a Jacumã</h2></div>
-      <button class="text-btn" id="clearMap" type="button">Limpar seleção</button>
+      <div>
+        <span class="eyebrow">Regiões do guia</span>
+        <h2 id="mapTitle">Do José Américo a Jacumã</h2>
+      </div>
+      <div class="map-head-actions">
+        <button class="text-btn" id="toggleMap" type="button" aria-expanded="true">Ocultar mapa</button>
+        <button class="text-btn" id="clearMap" type="button">Limpar</button>
+      </div>
     </div>
-    <p class="help">Mapa esquemático. Os pontos representam regiões, não endereços exatos.</p>
-    <div class="route-map" role="group" aria-label="Corredor de busca">
-      <div class="route-line" aria-hidden="true"></div>
-      <button class="map-node" data-near="jose"><span>1</span><b>José Américo</b></button>
-      <button class="map-node" data-near="geisel"><span>2</span><b>Geisel</b></button>
-      <button class="map-node" data-near="bancarios"><span>3</span><b>Bancários / UFPB</b></button>
-      <button class="map-node" data-near="mangabeira"><span>4</span><b>Mangabeira</b></button>
-      <button class="map-node muted-node" data-near="quadramares"><span>5</span><b>Quadramares</b><em>entorno</em></button>
-      <button class="map-node" data-near="portal"><span>6</span><b>Portal do Sol</b></button>
-      <button class="map-node muted-node" data-near="penha"><span>7</span><b>Penha</b><em>entorno</em></button>
-      <button class="map-node" data-near="seixas"><span>8</span><b>Seixas</b></button>
-      <button class="map-node" data-near="barra"><span>9</span><b>Barra de Gramame</b></button>
-      <button class="map-node" data-near="pb008"><span>10</span><b>PB-008</b></button>
-      <button class="map-node" data-near="conde"><span>11</span><b>Conde / Jacumã</b></button>
+
+    <div id="mapContent">
+      <p class="help">Mapa esquemático: representa regiões, não endereços exatos.</p>
+      <div class="route-map" role="group" aria-label="Corredor de busca">
+        <div class="route-line" aria-hidden="true"></div>
+        <button class="map-node" data-near="jose"><span>1</span><b>José Américo</b></button>
+        <button class="map-node" data-near="geisel"><span>2</span><b>Geisel</b></button>
+        <button class="map-node" data-near="bancarios"><span>3</span><b>Bancários / UFPB</b></button>
+        <button class="map-node" data-near="mangabeira"><span>4</span><b>Mangabeira</b></button>
+        <button class="map-node muted-node" data-near="quadramares"><span>5</span><b>Quadramares</b><em>entorno</em></button>
+        <button class="map-node" data-near="portal"><span>6</span><b>Portal do Sol</b></button>
+        <button class="map-node muted-node" data-near="penha"><span>7</span><b>Penha</b><em>entorno</em></button>
+        <button class="map-node" data-near="seixas"><span>8</span><b>Seixas</b></button>
+        <button class="map-node" data-near="barra"><span>9</span><b>Barra de Gramame</b></button>
+        <button class="map-node" data-near="pb008"><span>10</span><b>PB-008</b></button>
+        <button class="map-node" data-near="conde"><span>11</span><b>Conde / Jacumã</b></button>
+      </div>
     </div>
   </section>
 
   <section class="panel near-panel" aria-labelledby="nearTitle">
-    <div class="section-head"><div><span class="eyebrow">Atalhos</span><h2 id="nearTitle">Perto de…</h2></div></div>
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Escolha uma região</span>
+        <h2 id="nearTitle">Perto de…</h2>
+      </div>
+    </div>
+
     <div class="near-chips">
       <button class="near-chip active" data-near="all">Todas</button>
       <button class="near-chip" data-near="jose">📍 José Américo</button>
@@ -86,49 +173,131 @@
 
   <section id="filtersSection" class="panel filters-panel" aria-labelledby="filterTitle">
     <div class="section-head filter-head">
-      <div><span class="eyebrow">Refine a busca</span><h2 id="filterTitle">Filtros</h2></div>
-      <div class="filter-head-actions"><button class="text-btn" id="toggleFilters" type="button">Ocultar filtros</button><button class="text-btn" id="resetFilters" type="button">Redefinir</button></div>
-    </div>
-    <div id="filterBody" class="filters-wrap">
-      <div class="filters">
-        <label class="field field-wide"><span>Buscar</span><input id="q" placeholder="Nome, região ou cidade"></label>
-        <label class="field"><span>Região</span><select id="reg"><option value="">Todas</option></select></label>
-        <label class="field"><span>Tipo</span><select id="type"><option value="">Todos</option><option>Casa</option><option>Apartamento</option><option>Estúdio</option></select></label>
-        <label class="field"><span>Hóspedes</span><select id="cap"><option value="0">Qualquer</option><option value="2">2+</option><option value="4">4+</option><option value="6">6+</option><option value="8">8+</option><option value="10">10+</option></select></label>
-        <label class="field"><span>Quartos</span><select id="beds"><option value="0">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></label>
-        <label class="field"><span>Banheiros</span><select id="baths"><option value="0">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option></select></label>
-        <label class="field"><span>Origem</span><select id="source"><option value="">Todas</option><option value="official">Perfil oficial</option><option value="external">Anúncio externo</option></select></label>
-        <label class="field"><span>Manutenção</span><select id="maint"><option value="">Todos</option><option value="Ativo">Em dia</option><option value="Revisar">Revisar</option><option value="Desatualizado">Desatualizado</option></select></label>
-        <label class="field"><span>Ordenar</span><select id="sort"><option value="recommended">Recomendados</option><option value="rating">Melhor avaliação</option><option value="capacity">Maior capacidade</option><option value="name">Nome A–Z</option></select></label>
+      <div>
+        <span class="eyebrow">Encontre mais rápido</span>
+        <h2 id="filterTitle">O que você procura?</h2>
       </div>
-      <div class="checks">
-        <label class="check"><input id="pool" type="checkbox"> Piscina</label>
-        <label class="check"><input id="parking" type="checkbox"> Estacionamento</label>
-        <label class="check"><input id="air" type="checkbox"> Ar-condicionado</label>
-        <label class="check"><input id="pet" type="checkbox"> Pet friendly</label>
-        <label class="check"><input id="fav" type="checkbox"> ♥ Só favoritos</label>
-      </div>
+      <button class="text-btn" id="resetFilters" type="button">Limpar</button>
     </div>
+
+    <div class="quick-filters">
+      <label class="field field-search">
+        <span>Buscar</span>
+        <input id="q" placeholder="Nome, região ou cidade" autocomplete="off">
+      </label>
+
+      <label class="field">
+        <span>Região</span>
+        <select id="reg"><option value="">Todas</option></select>
+      </label>
+
+      <label class="field">
+        <span>Hóspedes</span>
+        <select id="cap">
+          <option value="0">Qualquer</option>
+          <option value="2">2+</option>
+          <option value="4">4+</option>
+          <option value="6">6+</option>
+          <option value="8">8+</option>
+          <option value="10">10+</option>
+        </select>
+      </label>
+
+      <label class="quick-check"><input id="pool" type="checkbox"> 🏊 Piscina</label>
+      <label class="quick-check"><input id="pet" type="checkbox"> 🐾 Pet</label>
+      <label class="quick-check"><input id="fav" type="checkbox"> ♥ Favoritos</label>
+    </div>
+
+    <button id="moreFiltersBtn" class="more-filters-btn" type="button" aria-expanded="false">+ Mais filtros</button>
+
+    <div id="advancedFilters" class="advanced-filters" hidden>
+      <label class="field">
+        <span>Tipo</span>
+        <select id="type"><option value="">Todos</option><option>Casa</option><option>Apartamento</option><option>Estúdio</option></select>
+      </label>
+
+      <label class="field">
+        <span>Quartos</span>
+        <select id="beds"><option value="0">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
+      </label>
+
+      <label class="field">
+        <span>Banheiros</span>
+        <select id="baths"><option value="0">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option></select>
+      </label>
+
+      <label class="field">
+        <span>Onde encontramos</span>
+        <select id="source"><option value="">Todas</option><option value="official">Perfil oficial</option><option value="external">Plataforma/anúncio</option></select>
+      </label>
+
+      <label class="field">
+        <span>Atualização</span>
+        <select id="maint"><option value="">Todas</option><option value="Ativo">Informação conferida</option><option value="Revisar">Revisar</option><option value="Desatualizado">Desatualizada</option></select>
+      </label>
+
+      <label class="field">
+        <span>Ordenar</span>
+        <select id="sort"><option value="recommended">Sugestões do guia</option><option value="rating">Melhor avaliação</option><option value="capacity">Maior capacidade</option><option value="name">Nome A–Z</option></select>
+      </label>
+
+      <label class="quick-check"><input id="parking" type="checkbox"> 🚗 Estacionamento</label>
+      <label class="quick-check"><input id="air" type="checkbox"> ❄️ Ar-condicionado</label>
+    </div>
+
     <div id="activeFilters" class="active-filters" aria-live="polite"></div>
   </section>
 
-  <section class="results-head">
-    <div><span id="contextLabel" class="eyebrow">Base completa</span><h2 id="resultTitle">Hospedagens</h2></div>
+  <section id="resultsStart" class="results-head">
+    <div>
+      <span id="contextLabel" class="eyebrow">Outras opções para você</span>
+      <h2 id="resultTitle">Veja outras hospedagens</h2>
+    </div>
     <p id="count" class="count"></p>
   </section>
-  <section id="cards" class="grid" aria-live="polite"></section>
 
-  <aside class="notice">
-    <div><b>Guia independente</b><p>O Temporada PB não recebe pagamentos nem realiza reservas. Confirme preço, disponibilidade e regras diretamente na fonte original.</p></div>
-    <div><b>Localização responsável</b><p>O mapa usa regiões e corredores. O guia não tenta descobrir endereços que a plataforma não tornou públicos.</p></div>
-    <div><b>Manutenção da base</b><p>Anúncios com mais de 30 dias sem conferência passam para “Revisar”; após 60 dias, para “Desatualizado”.</p></div>
+  <div id="loadingCards" class="skeleton-grid" aria-label="Carregando hospedagens">
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+  </div>
+
+  <div id="resultsGroups"></div>
+
+  <aside class="install-hint" id="installHint">
+    <div>
+      <b>Use como aplicativo</b>
+      <p>Instale no celular para abrir mais rápido e continuar acessando as informações já salvas mesmo sem internet.</p>
+    </div>
+    <button id="installHintClose" type="button" aria-label="Fechar aviso de instalação">×</button>
+  </aside>
+
+  <aside class="notice compact-notice">
+    <div>
+      <b>Sobre este guia</b>
+      <p>O Amigos da Vênus ajuda na pesquisa. Não realiza reservas nem recebe pagamentos.</p>
+      <button id="aboutGuideBtn" class="notice-link" type="button">Ler aviso completo</button>
+    </div>
+
+    <div>
+      <b>Antes de reservar</b>
+      <p>Valores, disponibilidade, regras, localização e comodidades devem ser confirmados na fonte original.</p>
+    </div>
   </aside>
 </main>
 
+<button id="backToTop" class="back-to-top" type="button" aria-label="Voltar ao topo">↑</button>
+
 <nav class="mobile-nav" aria-label="Navegação rápida">
-  <a href="#top"><span>⌂</span>Início</a><a href="#mapSection"><span>⌖</span>Mapa</a><a href="#filtersSection"><span>☷</span>Filtros</a><button id="mobileFav" type="button"><span>♥</span>Favoritos</button>
+  <a href="#top"><span>⌂</span>Início</a>
+  <a href="#mapSection"><span>⌖</span>Mapa</a>
+  <a href="#filtersSection"><span>☷</span>Filtros</a>
+  <button id="mobileFav" type="button"><span>♥</span>Favoritos</button>
 </nav>
-<footer>Temporada PB · V7 · Base revisada em 24/09/2026</footer>
+
+<footer>
+  Amigos da Vênus · <span id="footerVersion">V8.4</span> · Guia independente de apoio à pesquisa
+</footer>
 
 <div id="detailModal" class="modal" aria-hidden="true">
   <div class="modal-backdrop" data-close-detail></div>
@@ -137,5 +306,15 @@
     <div id="detailBody"></div>
   </section>
 </div>
+
+<div id="infoModal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-info></div>
+  <section class="modal-panel info-panel" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <button class="modal-close" type="button" aria-label="Fechar" data-close-info>×</button>
+    <div id="infoBody"></div>
+  </section>
+</div>
+
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
