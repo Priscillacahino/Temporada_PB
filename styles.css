@@ -690,3 +690,52 @@ select{
         max-height:300px !important;
     }
 }
+
+/* CORRECAO FINAL VENUS 2026-09-24 */
+.brand{
+  gap:14px !important;
+  align-items:center !important;
+}
+
+.brand-logo{
+  width:72px !important;
+  height:72px !important;
+  flex:0 0 72px !important;
+  max-width:none !important;
+  max-height:none !important;
+  object-fit:cover !important;
+  border-radius:18px !important;
+}
+
+.venus-first-media{
+  min-height:310px !important;
+}
+
+.venus-first-media img{
+  width:100% !important;
+  height:100% !important;
+  max-height:430px !important;
+  object-fit:cover !important;
+  object-position:center !important;
+}
+
+@media(max-width:640px){
+  .brand-logo{
+    width:64px !important;
+    height:64px !important;
+    flex-basis:64px !important;
+  }
+
+  .brand{
+    gap:10px !important;
+  }
+
+  .venus-first-media{
+    min-height:240px !important;
+  }
+
+  .venus-first-media img{
+    max-height:330px !important;
+  }
+}
+/* FIM CORRECAO FINAL VENUS */

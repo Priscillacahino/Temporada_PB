@@ -1,4 +1,4 @@
-
+﻿
 # Amigos da Vênus 🐈‍⬛ 🌿🌊
 
 <p align="center">
@@ -94,3 +94,11 @@ Porque, se a Vênus estiver ocupada, a gente ajuda você a encontrar outro canti
 ---
 
 **Desenvolvido por Priscilla Cahino**
+
+---
+
+## Foto principal da Casa de Praia Vênus
+
+A área de destaque da **Casa de Praia Vênus** utiliza uma imagem armazenada no próprio repositório em `icons/casa-venus-destaque.jpg`.
+
+Isso evita dependência de links externos e mantém a apresentação consistente no site e na versão instalada como PWA.

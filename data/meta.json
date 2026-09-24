@@ -1,12 +1,12 @@
 ﻿{
-    "versao":  "8.4",
+    "versao":  "8.5",
     "ultimaAtualizacao":  "2026-09-24",
     "totalRegistros":  27,
     "politicaRevisao":  {
                             "revisarAposDias":  30,
                             "desatualizadoAposDias":  60
                         },
-    "observacao":  "Casa de Praia Vênus em primeiro lugar; filtros progressivos; mapa recolhível; resultados agrupados por origem; compartilhamento; acessibilidade; offline aprimorado; SEO social e controle de versão.",
+    "observacao":  "Foto principal da Casa de Praia Vênus atualizada com a imagem fornecida; logotipo superior ampliado; cache PWA renovado.",
     "nomeProjeto":  "Amigos da Vênus",
     "hospedagemReferencia":  "Casa de Praia Vênus"
 }
