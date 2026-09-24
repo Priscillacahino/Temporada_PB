@@ -1,13 +1,13 @@
 {
-  "name": "Temporada PB",
-  "short_name": "Temporada PB",
-  "description": "Guia independente de hospedagens de curta temporada no eixo João Pessoa–Conde.",
+  "name": "Amigos da Vênus",
+  "short_name": "Amigos Vênus",
+  "description": "Guia acolhedor para ajudar quem não encontrou disponibilidade na Casa de Praia Vênus a pesquisar outras hospedagens.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#faf8f2",
-  "theme_color": "#0f6b6f",
+  "background_color": "#fbf7ef",
+  "theme_color": "#6f8066",
   "lang": "pt-BR",
   "icons": [
     {

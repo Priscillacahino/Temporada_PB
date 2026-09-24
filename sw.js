@@ -1,4 +1,4 @@
-const CACHE='tpb-v7-20260924';
+const CACHE='amigos-venus-v8-20260924';
 const ASSETS=['./','index.html','styles.css','app.js','manifest.json','data/imoveis.json','data/meta.json','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener('activate',e=>{e.waitUntil(Promise.all([caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))),self.clients.claim()]))});

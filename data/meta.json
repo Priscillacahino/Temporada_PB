@@ -1,10 +1,12 @@
 {
-  "versao": "7.0",
+  "versao": "8.0",
   "ultimaAtualizacao": "2026-09-24",
   "totalRegistros": 27,
   "politicaRevisao": {
     "revisarAposDias": 30,
     "desatualizadoAposDias": 60
   },
-  "observacao": "Status de manutenção calculado no dispositivo a partir da última verificação pública."
+  "observacao": "A Casa de Praia Vênus é a primeira opção de referência. Os 27 registros da base são alternativas independentes de pesquisa; o status é calculado a partir da última verificação pública.",
+  "nomeProjeto": "Amigos da Vênus",
+  "hospedagemReferencia": "Casa de Praia Vênus"
 }
