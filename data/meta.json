@@ -1,0 +1,10 @@
+{
+  "versao": "7.0",
+  "ultimaAtualizacao": "2026-09-24",
+  "totalRegistros": 27,
+  "politicaRevisao": {
+    "revisarAposDias": 30,
+    "desatualizadoAposDias": 60
+  },
+  "observacao": "Status de manutenção calculado no dispositivo a partir da última verificação pública."
+}
