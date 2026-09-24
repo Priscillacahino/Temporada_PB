@@ -1,5 +1,5 @@
-﻿const CACHE_STATIC='amigos-venus-v8-5-static';
-const CACHE_DATA='amigos-venus-v8-5-data';
+﻿const CACHE_STATIC='amigos-venus-v8-6-static';
+const CACHE_DATA='amigos-venus-v8-6-data';
 
 const STATIC_ASSETS=[
   './',
@@ -13,7 +13,8 @@ const STATIC_ASSETS=[
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
-  'icons/casa-venus-destaque.jpg'
+  'icons/casa-venus-destaque.jpg',
+  'icons/amigos-venus-logo-final.jpg'
 ];
 
 self.addEventListener('install',event=>{
@@ -98,4 +99,5 @@ self.addEventListener('fetch',event=>{
 
   event.respondWith(cacheFirst(event.request));
 });
+
 
