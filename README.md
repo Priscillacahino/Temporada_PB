@@ -1,4 +1,4 @@
-﻿# Amigos da Vênus 🌿🌊
+﻿# Amigos da Vênus 🐈‍⬛ 🌿🌊
 
 Guia independente de apoio à pesquisa de hospedagens no litoral sul da Paraíba.
 
