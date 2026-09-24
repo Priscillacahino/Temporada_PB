@@ -739,3 +739,179 @@ select{
   }
 }
 /* FIM CORRECAO FINAL VENUS */
+
+/* LOGO AMIGOS DA VENUS - IMAGEM PREENCHENDO O QUADRO */
+.brand-logo{
+    width:118px !important;
+    height:118px !important;
+    min-width:118px !important;
+    max-width:118px !important;
+    max-height:118px !important;
+    object-fit:cover !important;
+    object-position:center !important;
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:20px !important;
+    background:transparent !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.18) !important;
+}
+
+@media(max-width:700px){
+    .brand-logo{
+        width:104px !important;
+        height:104px !important;
+        min-width:104px !important;
+        max-width:104px !important;
+        max-height:104px !important;
+    }
+}
+
+/* LOGO FINAL - GATINHA EM DESTAQUE */
+.brand-logo-frame{
+    width:132px !important;
+    height:132px !important;
+    min-width:132px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+    border-radius:22px !important;
+    background:#fffaf2 !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.18) !important;
+}
+
+.brand-logo-frame .brand-logo{
+    width:100% !important;
+    height:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:cover !important;
+    object-position:center !important;
+    padding:0 !important;
+    margin:0 !important;
+
+    /* amplia a arte interna para a gatinha ficar visível */
+    transform:scale(1.45) !important;
+    transform-origin:center !important;
+
+    border-radius:0 !important;
+    box-shadow:none !important;
+    background:transparent !important;
+}
+
+.brand{
+    display:flex !important;
+    align-items:center !important;
+    gap:18px !important;
+}
+
+.brand > span:not(.brand-logo-frame){
+    font-size:1.2rem !important;
+}
+
+@media(max-width:700px){
+
+    .brand-logo-frame{
+        width:112px !important;
+        height:112px !important;
+        min-width:112px !important;
+    }
+
+    .brand-logo-frame .brand-logo{
+        transform:scale(1.45) !important;
+    }
+
+    .brand{
+        gap:12px !important;
+    }
+}
+
+/* AJUSTE FINAL DO LOGO DO TOPO
+   Mantem o quadro e amplia somente a imagem interna */
+.brand-logo-frame{
+    width:132px !important;
+    height:132px !important;
+    min-width:132px !important;
+    max-width:132px !important;
+    max-height:132px !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    overflow:hidden !important;
+    border-radius:22px !important;
+    background:#fffaf2 !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.18) !important;
+}
+
+.brand-logo-frame .brand-logo{
+    width:100% !important;
+    height:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    max-height:none !important;
+
+    object-fit:cover !important;
+    object-position:center !important;
+
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    background:transparent !important;
+
+    /* AQUI ESTÁ O PONTO PRINCIPAL:
+       aumenta a arte dentro do quadro */
+    transform:scale(1.75) !important;
+    transform-origin:center center !important;
+}
+
+@media(max-width:700px){
+    .brand-logo-frame{
+        width:132px !important;
+        height:132px !important;
+        min-width:132px !important;
+    }
+
+    .brand-logo-frame .brand-logo{
+        transform:scale(1.75) !important;
+    }
+}
+
+/* LOGO DEFINITIVO AMIGOS DA VENUS */
+.brand-logo-frame{
+    width:132px !important;
+    height:132px !important;
+    min-width:132px !important;
+    max-width:132px !important;
+    max-height:132px !important;
+    flex:0 0 132px !important;
+
+    display:block !important;
+
+    background-image:url("icons/amigos-venus-logo-final.jpg") !important;
+    background-repeat:no-repeat !important;
+    background-position:center center !important;
+    background-size:cover !important;
+
+    border-radius:22px !important;
+    overflow:hidden !important;
+    box-shadow:0 8px 24px rgba(0,0,0,.18) !important;
+}
+
+.brand{
+    display:flex !important;
+    align-items:center !important;
+    gap:18px !important;
+}
+
+@media(max-width:700px){
+    .brand-logo-frame{
+        width:132px !important;
+        height:132px !important;
+        min-width:132px !important;
+        flex-basis:132px !important;
+    }
+}
