@@ -1,4 +1,4 @@
-# Temporada PB — V7
+﻿# Temporada PB — V7
 
 Versão de consolidação dos itens 6 a 9 do projeto.
 
@@ -56,3 +56,15 @@ Base inicial com 27 hospedagens verificadas e estrutura PWA pronta para publica�
 ### Próxima etapa
 
 Publicar o repositório no GitHub e realizar a primeira implantação no Vercel.
+
+## Logotipo oficial
+
+O logotipo do Amigos da Vênus é armazenado dentro do próprio repositório.
+
+Ele é utilizado:
+- no canto superior da aplicação;
+- como ícone da PWA em 192×192;
+- como ícone da PWA em 512×512;
+- como ícone maskable para Android.
+
+O projeto não depende de links externos para carregar o logotipo depois da publicação.
