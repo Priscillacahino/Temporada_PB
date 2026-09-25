@@ -1,5 +1,5 @@
-﻿const CACHE_STATIC='amigos-venus-v8-7-static';
-const CACHE_DATA='amigos-venus-v8-6-data';
+const CACHE_STATIC='temporada-pb-v13-static';
+const CACHE_DATA='temporada-pb-v13-data';
 
 const STATIC_ASSETS=[
   './',
@@ -99,6 +99,3 @@ self.addEventListener('fetch',event=>{
 
   event.respondWith(cacheFirst(event.request));
 });
-
-
-
