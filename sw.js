@@ -1,12 +1,11 @@
-const CACHE_STATIC = 'temporada-pb-v16-static';
-const CACHE_DATA = 'temporada-pb-v16-data';
+const CACHE_STATIC = 'temporada-pb-v17-static';
+const CACHE_DATA = 'temporada-pb-v17-data';
 
 const STATIC_ASSETS = [
   './',
   'index.html',
-  'styles.css',
-  'styles-v9_1.css?v=9.2',
-  'app.js?v=9.2',
+  'styles.css?v=9.2.2',
+  'app.js?v=9.2.2',
   'manifest.json',
   'version.json',
   'data/imoveis.json',

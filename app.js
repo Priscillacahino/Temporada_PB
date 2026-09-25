@@ -21,9 +21,7 @@
       searchEyebrow: 'Encontre mais rápido',
       searchTitle: 'Onde você quer ficar?',
       clear: 'Limpar',
-      all: 'Todas',
       search: 'Buscar',
-      searchHint: 'Clique no campo para ver regiões e hospedagens disponíveis.',
       sort: 'Ordenar',
       sortDefault: 'Ordem padrão',
       sortDistance: 'Distância: mais próximos primeiro',
@@ -95,9 +93,7 @@
       searchEyebrow: 'Encuentra más rápido',
       searchTitle: '¿Dónde quieres alojarte?',
       clear: 'Limpiar',
-      all: 'Todas',
       search: 'Buscar',
-      searchHint: 'Haz clic en el campo para ver regiones y alojamientos disponibles.',
       sort: 'Ordenar',
       sortDefault: 'Orden original',
       sortDistance: 'Distancia: más cercanos primero',
@@ -236,7 +232,7 @@
       el.textContent = t(key);
     });
 
-    $('#q').placeholder = language === 'es' ? 'Nombre, región o ciudad' : 'Nome, região ou cidade';
+    $('#q').placeholder = language === 'es' ? 'Ciudad, región o alojamiento' : 'Cidade, região ou hospedagem';
     $('#networkBadge').textContent = navigator.onLine ? t('online') : t('offline');
     document.documentElement.lang = language === 'es' ? 'es' : 'pt-BR';
     $$('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === language));
@@ -627,12 +623,24 @@
 
     $('#q').addEventListener('focus', updateSearchSuggestions);
     $('#q').addEventListener('input', () => {
-      if (city && !$('#q').value.trim()) {
+      const typed = normalizeText($('#q').value);
+      const typedCity = ['João Pessoa', 'Conde']
+        .find(value => normalizeText(value) === typed) || '';
+
+      if (city && typed !== normalizeText(city)) {
         city = '';
         $('#reg').value = '';
         populateRegions();
         updateDistanceAvailability();
       }
+
+      if (typedCity && typedCity !== city) {
+        city = typedCity;
+        $('#reg').value = '';
+        populateRegions();
+        updateDistanceAvailability();
+      }
+
       render();
       updateSearchSuggestions();
     });

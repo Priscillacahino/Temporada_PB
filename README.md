@@ -28,11 +28,21 @@ Cada opção direciona para a **fonte original**, onde devem ser confirmados dis
 
 ## 🌿 Como funciona
 
-1. Escolha a cidade.
-2. Pesquise por nome, região ou tipo de hospedagem.
-3. Use os filtros complementares quando necessário.
-4. Abra os detalhes da opção desejada.
-5. Acesse a **fonte original** para confirmar informações e realizar qualquer contato ou contratação.
+1. No campo **Buscar**, selecione **João Pessoa** ou **Conde**.
+2. Continue pesquisando por região ou hospedagem, se desejar.
+3. Abra **+ Mais filtros** para escolher tipo, capacidade e comodidades.
+4. Para comparar localização, selecione **Distância: mais próximos primeiro**.
+5. Abra os detalhes da hospedagem desejada.
+6. Acesse a **fonte original** para confirmar as informações e realizar qualquer contato ou contratação.
+
+### Distância
+
+A ordenação por distância é **aproximada** porque os anúncios públicos nem sempre apresentam o endereço exato da hospedagem.
+
+- **João Pessoa:** referência no Residencial Brise, José Américo.
+- **Conde:** referência na Av. Beira Mar, em Jacumã.
+
+Os cards usam `≈` para deixar claro que o valor é uma estimativa baseada na região/bairro informado pela fonte.
 
 ---
 
@@ -40,13 +50,15 @@ Cada opção direciona para a **fonte original**, onde devem ser confirmados dis
 
 - referências de hospedagem em João Pessoa e Conde;
 - casas, apartamentos e estúdios;
-- pesquisa por cidade e região;
+- busca assistida por cidade, região e hospedagem;
+- ordenação por distância aproximada;
 - filtros de capacidade e comodidades;
 - favoritos armazenados no próprio dispositivo;
 - acesso direto à fonte original;
 - campos ausentes identificados sem inventar informações;
-- layout responsivo para celular;
+- layout responsivo para celular, tablet e computador;
 - instalação como PWA em navegadores compatíveis;
+- funcionamento com cache para uma segunda abertura offline;
 - interface em português e espanhol.
 
 ---
@@ -60,6 +72,24 @@ O projeto não representa, administra ou intermedeia as hospedagens exibidas e n
 A presença de uma hospedagem no projeto não representa parceria, preferência ou recomendação.
 
 Disponibilidade, valores, localização, regras, políticas, pagamento e contratação devem ser confirmados exclusivamente na **fonte original**.
+
+---
+
+## 🧪 Manutenção
+
+A base possui validação local para conferir quantidade de registros, duplicidades, arquivos principais e alinhamento de versão.
+
+No PowerShell, dentro do repositório:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\scripts\validar_projeto.ps1"
+```
+
+Para revisar os links públicos:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\scripts\verificar_links.ps1"
+```
 
 ---
 

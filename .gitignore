@@ -23,3 +23,8 @@ build/
 .env
 .env.*
 !.env.example
+
+# Backups e relatórios locais do projeto
+backup_v*/
+_backups_Temporada_PB/
+LINKS_A_REVISAR.md

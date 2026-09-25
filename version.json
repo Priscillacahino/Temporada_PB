@@ -1,6 +1,6 @@
 {
-  "version": "9.2",
+  "version": "9.2.2",
   "date": "2026-09-25",
   "name": "Temporada PB",
-  "notes": "Busca unificada por cidade, região e hospedagem; botões de cidade removidos; ordenação por distância habilitada após selecionar João Pessoa ou Conde; correção de chaves técnicas visíveis e cache do PWA."
+  "notes": "Consolidação final: 27 registros alinhados aos metadados, PB-008 padronizado, busca por cidade refinada, CSS unificado, documentação atualizada, cache PWA renovado e validação automática adicionada."
 }
