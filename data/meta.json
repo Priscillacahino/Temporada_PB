@@ -1,5 +1,5 @@
 {
-  "versao": "9.0",
+  "versao": "9.4.3",
   "ultimaAtualizacao": "2026-09-25",
   "totalRegistros": 27,
   "politicaRevisao": {
@@ -7,5 +7,6 @@
     "desatualizadoAposDias": 60
   },
   "observacao": "Base de referências públicas de hospedagem. Disponibilidade, valores, localização e regras devem ser confirmados na fonte original.",
-  "nomeProjeto": "Temporada PB"
+  "nomeProjeto": "Temporada PB",
+  "subtitulo": "Sugestão de hospedagem Paraíba"
 }

@@ -1,28 +1,27 @@
-# Testes â€” Temporada PB V9.2
+# Testes — Temporada PB V9.4.3
 
-Data da revisÃ£o: **25/09/2026**
+Data da revisão: **25/09/2026**
 
-## Escopo desta revisÃ£o
+## Escopo da auditoria
 
-Esta versÃ£o foi preparada para consolidar a identidade **Temporada PB**, com o subtÃ­tulo **SugestÃ£o de hospedagem ParaÃ­ba**, e retirar da versÃ£o atual do projeto associaÃ§Ãµes pÃºblicas e internas com marcas de hospedagem que nÃ£o fazem parte do projeto.
+Esta revisão parte da versão atualmente publicada do Temporada PB e verifica apenas os pontos ainda pendentes após a consolidação da identidade independente.
 
-## VerificaÃ§Ãµes estruturais
+## Verificações estruturais
 
-- arquivos principais presentes;
-- `manifest.json`, `version.json`, `data/meta.json` e `data/imoveis.json` vÃ¡lidos;
-- base com 27 registros;
-- IDs Ãºnicos;
-- URLs de hospedagem Ãºnicas;
-- nomes de hospedagem sem duplicidade exata;
-- campos essenciais de nome, cidade, regiÃ£o, fonte e URL presentes;
-- Service Worker atualizado para a versÃ£o 9;
-- nova identidade visual neutra;
-- referÃªncias antigas de marca removidas dos arquivos atuais;
-- fotos externas dos anÃºncios removidas da base, mantendo o acesso Ã  fonte original;
-- favoritos, filtros, mapa esquemÃ¡tico, compartilhamento e instalaÃ§Ã£o PWA preservados.
+- `manifest.json`, `version.json`, `data/meta.json` e `data/imoveis.json` válidos;
+- 27 registros preservados;
+- IDs, nomes e URLs sem duplicidade exata;
+- campos essenciais de nome, cidade, região, fonte e URL presentes;
+- nenhuma imagem externa incorporada à base de hospedagens;
+- Service Worker atualizado;
+- identidade pública `Temporada PB`;
+- subtítulo `Sugestão de hospedagem Paraíba`;
+- nenhuma referência ativa à identidade pública anterior;
+- nenhum vínculo funcional com projetos ou repositórios externos;
+- favoritos, filtros, compartilhamento, idiomas e instalação PWA preservados.
 
-## ValidaÃ§Ã£o final recomendada apÃ³s publicaÃ§Ã£o
+## Validação recomendada após publicação
 
-Abra o site publicado no celular e no computador, teste busca, filtros, favoritos, menu, links externos, instalaÃ§Ã£o PWA e uma segunda abertura offline.
+Abra o site no celular e no computador e teste busca, filtros, favoritos, detalhes, links externos, troca de idioma, instalação PWA e uma segunda abertura offline.
 
-As informaÃ§Ãµes das hospedagens podem mudar e devem ser confirmadas diretamente na fonte original.
+As informações das hospedagens podem mudar e devem ser confirmadas diretamente na fonte original.

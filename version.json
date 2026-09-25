@@ -1,6 +1,7 @@
 {
-  "version": "9.0",
+  "version": "9.4.3",
   "date": "2026-09-25",
   "name": "Temporada PB",
-  "notes": "Identidade consolidada, interface independente, filtros simplificados, acessibilidade, PWA e acesso direto às fontes originais."
+  "subtitle": "Sugestão de hospedagem Paraíba",
+  "notes": "Auditoria final da identidade independente, documentação e consistência da base."
 }

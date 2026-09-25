@@ -1,5 +1,5 @@
-const CACHE_STATIC = 'temporada-pb-v14-static';
-const CACHE_DATA = 'temporada-pb-v14-data';
+const CACHE_STATIC = 'temporada-pb-v15-3-static';
+const CACHE_DATA = 'temporada-pb-v15-3-data';
 
 const STATIC_ASSETS = [
   './',

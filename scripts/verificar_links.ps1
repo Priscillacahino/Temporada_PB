@@ -48,7 +48,7 @@ foreach($item in $items){
 
 $bad=$rows | Where-Object {$_.Status -eq "REVISAR"}
 
-$md="# Verificação de links — Amigos da Vênus`r`n`r`n"
+$md="# Verificação de links — Temporada PB`r`n`r`n"
 $md+="Data: $(Get-Date -Format 'dd/MM/yyyy HH:mm')`r`n`r`n"
 
 if(!$bad){

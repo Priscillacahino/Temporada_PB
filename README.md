@@ -1,11 +1,11 @@
 # Temporada PB 🌴
 
 <p align="center">
-  <img src="./icons/temporada-pb-logo.png" alt="Temporada PB — Sugestões de hospedagem Paraíba" width="420">
+  <img src="./icons/temporada-pb-logo.png" alt="Temporada PB — Sugestão de hospedagem Paraíba" width="420">
 </p>
 
 <p align="center">
-  <strong>Sugestões de hospedagem Paraíba</strong>
+  <strong>Sugestão de hospedagem Paraíba</strong>
 </p>
 
 <p align="center">
@@ -21,6 +21,8 @@ O **Temporada PB** é um projeto pessoal criado para organizar referências púb
 A proposta é facilitar a pesquisa sem substituir os canais responsáveis pelos anúncios ou perfis apresentados.
 
 Cada opção direciona para a **fonte original**, onde devem ser confirmados disponibilidade, valores, localização, regras, políticas e demais condições.
+
+> **Independência de marca:** o Temporada PB é independente da marca Vênus e de qualquer projeto ou repositório Vênus. Não é produto, extensão, serviço, canal de reservas, parceria ou representação da marca. Ele pode ser compartilhado informalmente como um bônus de pesquisa para alguém que não encontrou hospedagem na Vênus, sem criar vínculo entre os projetos.
 
 ---
 
