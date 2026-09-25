@@ -26,7 +26,7 @@
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles-v9_1.css">
+  <link rel="stylesheet" href="styles-v9_1.css?v=9.2">
 
   <title>Temporada PB — Sugestões de hospedagem Paraíba</title>
 </head>
@@ -83,38 +83,27 @@
       </div>
       <button id="resetFilters" class="text-btn" type="button" data-i18n="clear">Limpar</button>
     </div>
-
-    <div class="city-buttons" role="group" aria-label="Cidade">
-      <button class="city-btn active" type="button" data-city="" data-i18n="all">Todas</button>
-      <button class="city-btn" type="button" data-city="João Pessoa">João Pessoa</button>
-      <button class="city-btn" type="button" data-city="Conde">Conde</button>
-    </div>
-
-    <div class="quick-search">
+<div class="quick-search">
       <div class="field field-search search-autocomplete">
         <label for="q"><span data-i18n="search">Buscar</span></label>
         <div class="search-input-wrap">
           <input id="q" type="search" autocomplete="off" placeholder="Nome, região ou cidade" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="searchSuggestions">
           <div id="searchSuggestions" class="search-suggestions" role="listbox" hidden></div>
         </div>
-        <small class="field-hint" data-i18n="searchHint">Clique no campo para ver regiões e hospedagens disponíveis.</small>
-      </div>
+</div>
 
       <label class="field">
         <span data-i18n="sort">Ordenar</span>
         <select id="sort">
           <option value="default" data-i18n="sortDefault">Ordem padrão</option>
-          <option value="distance" data-i18n="sortDistance">Mais perto do endereço-base</option>
+          <option id="sortDistanceOption" value="distance">Distância: mais próximos primeiro</option>
           <option value="name" data-i18n="sortName">Nome A–Z</option>
           <option value="rating" data-i18n="sortRating">Melhor avaliação</option>
           <option value="capacity" data-i18n="sortCapacity">Maior capacidade</option>
         </select>
       </label>
     </div>
-
-    <p id="distanceNote" class="distance-note" data-i18n="distanceNote">Distâncias aproximadas por região. João Pessoa usa o Residencial Brise; Conde usa a Av. Beira Mar, 90, em Jacumã.</p>
-
-    <button id="moreFiltersBtn" class="more-filters-btn" type="button" aria-expanded="false" data-i18n="moreFilters">+ Mais filtros</button>
+<button id="moreFiltersBtn" class="more-filters-btn" type="button" aria-expanded="false" data-i18n="moreFilters">+ Mais filtros</button>
 
     <div id="advancedFilters" class="advanced-filters" hidden>
       <label class="field">
@@ -212,6 +201,6 @@
 
 <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
-<script src="app.js"></script>
+<script src="app.js?v=9.2"></script>
 </body>
 </html>

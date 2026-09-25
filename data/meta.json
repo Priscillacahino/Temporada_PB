@@ -1,11 +1,11 @@
 {
-  "versao": "9.1",
-  "ultimaAtualizacao": "2026-09-25",
-  "totalRegistros": 22,
-  "politicaRevisao": {
-    "revisarAposDias": 30,
-    "desatualizadoAposDias": 60
-  },
-  "observacao": "Base de referências públicas de hospedagem. Disponibilidade, valores, localização e regras devem ser confirmados na fonte original. Distâncias exibidas no aplicativo são aproximações por bairro/região em relação aos endereços-base informados.",
-  "nomeProjeto": "Temporada PB"
+    "versao":  "9.2",
+    "ultimaAtualizacao":  "2026-09-25",
+    "totalRegistros":  22,
+    "politicaRevisao":  {
+                            "revisarAposDias":  30,
+                            "desatualizadoAposDias":  60
+                        },
+    "observacao":  "Base de referências públicas de hospedagem. Disponibilidade, valores, localização e regras devem ser confirmados na fonte original. A ordenação por distância usa aproximações por bairro/região, a partir do endereço-base definido para João Pessoa ou Conde.",
+    "nomeProjeto":  "Temporada PB"
 }

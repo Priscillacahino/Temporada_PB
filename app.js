@@ -26,7 +26,7 @@
       searchHint: 'Clique no campo para ver regiões e hospedagens disponíveis.',
       sort: 'Ordenar',
       sortDefault: 'Ordem padrão',
-      sortDistance: 'Mais perto do endereço-base',
+      sortDistance: 'Distância: mais próximos primeiro',
       sortName: 'Nome A–Z',
       sortRating: 'Melhor avaliação',
       sortCapacity: 'Maior capacidade',
@@ -100,7 +100,7 @@
       searchHint: 'Haz clic en el campo para ver regiones y alojamientos disponibles.',
       sort: 'Ordenar',
       sortDefault: 'Orden original',
-      sortDistance: 'Más cerca de la dirección base',
+      sortDistance: 'Distancia: más cercanos primero',
       sortName: 'Nombre A–Z',
       sortRating: 'Mejor valoración',
       sortCapacity: 'Mayor capacidad',
@@ -180,7 +180,7 @@
     'Cristo Redentor / acesso ao corredor': [-7.15939, -34.87573],
     'Bancários': [-7.14837, -34.83853],
     'Paratibe / Litoral Sul': [-7.20577, -34.83324],
-    'Zona Sul / acesso PB‑008': [-7.19500, -34.83500],
+    'Zona Sul / acesso PB-008': [-7.19500, -34.83500],
     'Jacumã': [-7.27800, -34.79900],
     'Praia do Amor / Jacumã': [-7.27422, -34.80132],
     'Carapibus': [-7.299275, -34.799324]
@@ -241,6 +241,10 @@
     document.documentElement.lang = language === 'es' ? 'es' : 'pt-BR';
     $$('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === language));
 
+    const distanceOption = $('#sortDistanceOption') || $('#sort option[value="distance"]');
+    if (distanceOption) distanceOption.textContent = t('sortDistance');
+    updateDistanceAvailability();
+
     const expanded = $('#moreFiltersBtn').getAttribute('aria-expanded') === 'true';
     $('#moreFiltersBtn').textContent = expanded ? t('lessFilters') : t('moreFilters');
     if (document.activeElement === $('#q')) updateSearchSuggestions();
@@ -269,6 +273,22 @@
     if (regions.includes(current)) select.value = current;
   }
 
+  function updateDistanceAvailability() {
+    const option = $('#sortDistanceOption') || $('#sort option[value="distance"]');
+    if (!option) return;
+
+    option.disabled = !city;
+    option.title = city
+      ? ''
+      : (language === 'es'
+        ? 'Selecciona João Pessoa o Conde en Buscar para ordenar por distancia.'
+        : 'Selecione João Pessoa ou Conde em Buscar para ordenar por distância.');
+
+    if (!city && $('#sort').value === 'distance') {
+      $('#sort').value = 'default';
+    }
+  }
+
   function summary(list = data) {
     $('#totalCount').textContent = list.length;
     $('#houseCount').textContent = list.filter(x => x.tipo === 'Casa').length;
@@ -279,7 +299,8 @@
   function activeFilterPills() {
     const pills = [];
     if (city) pills.push(city);
-    if ($('#q').value.trim()) pills.push($('#q').value.trim());
+    const queryValue = $('#q').value.trim();
+    if (queryValue && normalizeText(queryValue) !== normalizeText(city)) pills.push(queryValue);
     if ($('#reg').value) pills.push($('#reg').value);
     if ($('#type').value) pills.push($('#type').value);
     if (+$('#cap').value) pills.push(`${$('#cap').value}+ ${t('guests').toLowerCase()}`);
@@ -316,12 +337,21 @@
   }
 
   function suggestionEntries() {
-    const scoped = city ? data.filter(item => item.cidade === city) : data;
     const entries = [];
 
-    uniqueSorted(scoped.map(item => item.regiao)).forEach(value => entries.push({ value, kind: t('suggestionRegion'), priority: 0 }));
-    if (!city) uniqueSorted(scoped.map(item => item.cidade)).forEach(value => entries.push({ value, kind: t('suggestionCity'), priority: 1 }));
-    uniqueSorted(scoped.map(item => item.nome)).forEach(value => entries.push({ value, kind: t('suggestionStay'), priority: 2 }));
+    ['João Pessoa', 'Conde'].forEach(value => {
+      entries.push({ value, kind: t('suggestionCity'), type: 'city', priority: 0 });
+    });
+
+    const scoped = city ? data.filter(item => item.cidade === city) : data;
+
+    uniqueSorted(scoped.map(item => item.regiao)).forEach(value => {
+      entries.push({ value, kind: t('suggestionRegion'), type: 'region', priority: 1 });
+    });
+
+    uniqueSorted(scoped.map(item => item.nome)).forEach(value => {
+      entries.push({ value, kind: t('suggestionStay'), type: 'stay', priority: 2 });
+    });
 
     return entries;
   }
@@ -331,14 +361,15 @@
     const input = $('#q');
     if (!box || !input) return;
 
-    const query = normalizeText(input.value);
+    const typedQuery = normalizeText(input.value);
+    const query = city && typedQuery === normalizeText(city) ? '' : typedQuery;
     const matches = suggestionEntries()
       .filter(entry => !query || normalizeText(entry.value).includes(query))
       .sort((a, b) => a.priority - b.priority || a.value.localeCompare(b.value, 'pt-BR'))
       .slice(0, 36);
 
     box.innerHTML = matches.length
-      ? matches.map(entry => `<button class="search-suggestion" type="button" role="option" data-search-value="${escapeHtml(entry.value)}"><strong>${escapeHtml(entry.value)}</strong><span class="search-suggestion-kind">${escapeHtml(entry.kind)}</span></button>`).join('')
+      ? matches.map(entry => `<button class="search-suggestion" type="button" role="option" data-search-kind="${escapeHtml(entry.type)}" data-search-value="${escapeHtml(entry.value)}"><strong>${escapeHtml(entry.value)}</strong><span class="search-suggestion-kind">${escapeHtml(entry.kind)}</span></button>`).join('')
       : `<div class="search-suggestion-empty">${escapeHtml(t('noSuggestions'))}</div>`;
 
     box.hidden = false;
@@ -356,7 +387,7 @@
     const mode = $('#sort').value;
     const copy = [...list];
 
-    if (mode === 'distance') {
+    if (mode === 'distance' && city) {
       return copy.sort((a, b) => {
         const da = distanceInfo(a)?.km ?? Number.POSITIVE_INFINITY;
         const db = distanceInfo(b)?.km ?? Number.POSITIVE_INFINITY;
@@ -467,8 +498,8 @@
     $('#cap').value = '0';
     $('#sort').value = 'default';
     ['pool', 'pet', 'parking', 'air', 'fav'].forEach(id => { $('#' + id).checked = false; });
-    $$('.city-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.city === ''));
     populateRegions();
+    updateDistanceAvailability();
     closeSearchSuggestions();
     render();
   }
@@ -590,20 +621,18 @@
   function setupEvents() {
     $$('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
 
-    $$('.city-btn').forEach(btn => btn.addEventListener('click', () => {
-      city = btn.dataset.city;
-      $$('.city-btn').forEach(x => x.classList.toggle('active', x === btn));
-      populateRegions();
-      render();
-      if (document.activeElement === $('#q')) updateSearchSuggestions();
-    }));
-
     ['reg', 'type', 'cap', 'sort', 'pool', 'pet', 'parking', 'air', 'fav'].forEach(id => {
       $('#' + id)?.addEventListener('change', render);
     });
 
     $('#q').addEventListener('focus', updateSearchSuggestions);
     $('#q').addEventListener('input', () => {
+      if (city && !$('#q').value.trim()) {
+        city = '';
+        $('#reg').value = '';
+        populateRegions();
+        updateDistanceAvailability();
+      }
       render();
       updateSearchSuggestions();
     });
@@ -616,7 +645,23 @@
     $('#searchSuggestions').addEventListener('click', event => {
       const option = event.target.closest('[data-search-value]');
       if (!option) return;
-      $('#q').value = option.dataset.searchValue;
+
+      const value = option.dataset.searchValue;
+      const kind = option.dataset.searchKind;
+
+      if (kind === 'city') {
+        city = value;
+        $('#q').value = value;
+        $('#reg').value = '';
+        populateRegions();
+        updateDistanceAvailability();
+        closeSearchSuggestions();
+        render();
+        $('#q').focus();
+        return;
+      }
+
+      $('#q').value = value;
       closeSearchSuggestions();
       render();
       $('#q').focus();
@@ -711,6 +756,7 @@
       meta = metadata || {};
       $('#loadingCards')?.remove();
       populateRegions();
+      updateDistanceAvailability();
       render();
     } catch {
       $('#loadingCards')?.remove();

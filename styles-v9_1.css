@@ -4,6 +4,7 @@
 html,body{max-width:100%;overflow-x:hidden}
 img,svg,video,canvas{max-width:100%}
 .site-header,.topbar,.brand,.brand-copy,main,.panel,.quick-search,.field,.card,.card-body{min-width:0}
+.city-buttons{display:none!important}
 
 .quick-search{
   grid-template-columns:minmax(0,2fr) minmax(220px,1fr);
@@ -167,3 +168,10 @@ img,svg,video,canvas{max-width:100%}
   .section-head,.results-head{flex-direction:column}
   .result-count{text-align:left}
 }
+
+.search-suggestion[data-search-kind="city"]{
+  background:#f7f2e9;
+  color:var(--forest-dark);
+}
+.search-suggestion[data-search-kind="city"] strong::before{content:"📍 "}
+#sort option:disabled{color:#9a9a92}

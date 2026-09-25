@@ -1,6 +1,6 @@
 {
-  "version": "9.1",
+  "version": "9.2",
   "date": "2026-09-25",
   "name": "Temporada PB",
-  "notes": "Responsividade ampliada, filtros com contagem dinâmica, busca com sugestões visíveis e ordenação por distância aproximada aos endereços-base de João Pessoa e Conde."
+  "notes": "Busca unificada por cidade, região e hospedagem; botões de cidade removidos; ordenação por distância habilitada após selecionar João Pessoa ou Conde; correção de chaves técnicas visíveis e cache do PWA."
 }
