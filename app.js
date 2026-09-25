@@ -1,4 +1,4 @@
-﻿let D=[],META={},near='all';
+let D=[],META={},near='all';
 
 const $=s=>document.querySelector(s);
 const $$=s=>[...document.querySelectorAll(s)];
@@ -447,20 +447,20 @@ function openInfo(kind='how'){
 
   if(kind==='about'){
     b.innerHTML=`<span class="eyebrow">Sobre este guia</span>
-      <h2 id="infoTitle">Informação simples e transparente</h2>
-      <p>O Amigos da Vênus foi criado para ajudar quem não encontrou disponibilidade na Casa de Praia Vênus a pesquisar outras hospedagens.</p>
-      <p><b>Não temos vínculo comercial com as hospedagens alternativas</b>, salvo quando isso estiver expressamente informado.</p>
-      <p>Não fazemos reservas, não recebemos pagamentos e não garantimos disponibilidade. As informações são baseadas nos anúncios, perfis e postagens públicas das próprias hospedagens.</p>
-      <p>Antes de reservar, confirme diretamente na fonte original valores, datas, regras, localização e comodidades.</p>`;
+      <h2 id="infoTitle">InformaÃ§Ã£o simples e transparente</h2>
+      <p>O Temporada PB Ã© um guia independente de apoio Ã  pesquisa de hospedagens.</p>
+      <p><b>NÃ£o possui vÃ­nculo com a marca VÃªnus e nÃ£o representa nenhuma hospedagem, empresa ou plataforma listada.</b></p>
+      <p>NÃ£o fazemos reservas, nÃ£o recebemos pagamentos e nÃ£o garantimos disponibilidade. As informaÃ§Ãµes sÃ£o baseadas nas fontes originais cadastradas e podem mudar.</p>
+      <p>Antes de reservar, confirme diretamente na fonte original valores, datas, regras, localizaÃ§Ã£o e comodidades.</p>`;
   }else{
     b.innerHTML=`<span class="eyebrow">Como funciona</span>
-      <h2 id="infoTitle">Três passos e pronto</h2>
+      <h2 id="infoTitle">TrÃªs passos e pronto</h2>
       <ol>
-        <li><b>Confira primeiro a Casa de Praia Vênus.</b></li>
-        <li><b>Se não houver vaga, compare as alternativas.</b></li>
-        <li><b>Gostou de uma opção? Abra a fonte original e confirme tudo por lá.</b></li>
+        <li><b>Pesquise e filtre as opÃ§Ãµes.</b></li>
+        <li><b>Compare as informaÃ§Ãµes disponÃ­veis.</b></li>
+        <li><b>Abra a fonte original e confirme tudo por lÃ¡.</b></li>
       </ol>
-      <p>Você pode filtrar por região, hóspedes, piscina, pet e favoritos. Os demais filtros ficam em “Mais filtros”.</p>`;
+      <p>VocÃª pode filtrar por regiÃ£o, hÃ³spedes, piscina, pet e favoritos. Os demais filtros ficam em â€œMais filtrosâ€.</p>`;
   }
 
   m.classList.add('open');
@@ -525,13 +525,13 @@ function setupInstallHint(){
   const hint=$('#installHint');
   const close=$('#installHintClose');
 
-  if(localStorage.getItem('venus-install-hint-dismissed')==='1'){
+  if(localStorage.getItem('temporada-pb-install-hint-dismissed')==='1'){
     hint?.classList.add('hidden');
   }
 
   close?.addEventListener('click',()=>{
     hint.classList.add('hidden');
-    localStorage.setItem('venus-install-hint-dismissed','1');
+    localStorage.setItem('temporada-pb-install-hint-dismissed','1');
   });
 }
 

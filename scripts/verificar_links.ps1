@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$RepoPath = "$HOME\Downloads\Temporada_PB_upload\Temporada_PB"
 )
 

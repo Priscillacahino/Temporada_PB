@@ -1,32 +1,32 @@
-﻿{
-    "name":  "Amigos da Vênus",
-    "short_name":  "Amigos Vênus",
-    "description":  "Guia independente para pesquisar hospedagens no litoral sul da Paraíba, com a Casa de Praia Vênus como primeira referência.",
-    "start_url":  "./",
-    "scope":  "./",
-    "display":  "standalone",
-    "orientation":  "any",
-    "background_color":  "#fbf7ef",
-    "theme_color":  "#6f8066",
-    "lang":  "pt-BR",
-    "icons":  [
-                  {
-                      "src":  "icons/icon-192.png",
-                      "sizes":  "192x192",
-                      "type":  "image/png",
-                      "purpose":  "any"
-                  },
-                  {
-                      "src":  "icons/icon-512.png",
-                      "sizes":  "512x512",
-                      "type":  "image/png",
-                      "purpose":  "any"
-                  },
-                  {
-                      "src":  "icons/icon-maskable-512.png",
-                      "sizes":  "512x512",
-                      "type":  "image/png",
-                      "purpose":  "maskable"
-                  }
-              ]
+{
+  "name": "Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba",
+  "short_name": "Temporada PB",
+  "description": "Guia independente para pesquisar hospedagens na ParaÃ­ba e confirmar informaÃ§Ãµes diretamente na fonte original.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fbf7ef",
+  "theme_color": "#6f8066",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
 }

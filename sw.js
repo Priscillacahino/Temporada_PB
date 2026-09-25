@@ -1,5 +1,5 @@
-const CACHE_STATIC='temporada-pb-v13-static';
-const CACHE_DATA='temporada-pb-v13-data';
+const CACHE_STATIC='temporada-pb-v9-2-static';
+const CACHE_DATA='temporada-pb-v9-2-data';
 
 const STATIC_ASSETS=[
   './',
@@ -13,8 +13,7 @@ const STATIC_ASSETS=[
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
-  'icons/casa-venus-destaque.jpg',
-  'icons/amigos-venus-logo-final.jpg'
+  'icons/temporada-pb-logo.jpg',
 ];
 
 self.addEventListener('install',event=>{

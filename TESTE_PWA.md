@@ -1,51 +1,28 @@
-# Testes — Temporada PB V7
+# Testes â€” Temporada PB V9.2
 
-Data: 24/09/2026
-Resultado estrutural: **31/31 verificações aprovadas**.
+Data da revisÃ£o: **25/09/2026**
 
-## Verificações
-- ✅ Arquivo index.html
-- ✅ Arquivo styles.css
-- ✅ Arquivo app.js
-- ✅ Arquivo manifest.json
-- ✅ Arquivo sw.js
-- ✅ Arquivo data/imoveis.json
-- ✅ Arquivo data/meta.json
-- ✅ 27 registros — 27
-- ✅ IDs únicos
-- ✅ URLs externas HTTPS
-- ✅ Tipos válidos
-- ✅ Data ISO de manutenção
-- ✅ Status base presente
-- ✅ Manifest standalone
-- ✅ Manifest scope/start
-- ✅ 3 ícones PWA — 3
-- ✅ Ícone 192x192 any
-- ✅ Ícone 512x512 any
-- ✅ Ícone 512x512 maskable
-- ✅ Cache offline completo
-- ✅ Service Worker install
-- ✅ Service Worker activate
-- ✅ Service Worker fetch
-- ✅ Indicador online/offline
-- ✅ Filtros de quartos/banheiros
-- ✅ Ordenação
-- ✅ Filtro manutenção
-- ✅ Favoritos locais
-- ✅ Navegação móvel
-- ✅ Tela de detalhes
-- ✅ Política 30/60
+## Escopo desta revisÃ£o
 
-## Servidor local
-- ✅ `index.html` respondeu HTTP 200 no servidor local.
-- ✅ `data/meta.json` respondeu e foi lido corretamente.
+Esta versÃ£o foi preparada para consolidar a identidade **Temporada PB**, com o subtÃ­tulo **SugestÃ£o de hospedagem ParaÃ­ba**, e retirar da versÃ£o atual do projeto associaÃ§Ãµes pÃºblicas e internas com marcas de hospedagem que nÃ£o fazem parte do projeto.
 
-## Observação sobre teste visual automatizado
-O Chromium headless disponível neste ambiente não consegue inicializar corretamente nem em uma página vazia (`about:blank`) por limitação do runtime/DBus. Por isso, não foi possível concluir aqui a captura visual automatizada em viewport móvel nem simular a segunda abertura offline no navegador. O pacote foi validado estruturalmente para responsividade e PWA, mas a validação final de instalação/offline deve ser feita no navegador de um celular ou após publicação em HTTPS.
+## VerificaÃ§Ãµes estruturais
 
-## Checklist recomendado após publicar
-1. Abrir no Chrome/Android e usar “Adicionar à tela inicial”.
-2. Abrir uma vez online e depois ativar modo avião.
-3. Reabrir o app e confirmar que mapa, filtros, cards e dados continuam carregando.
-4. Confirmar que links externos pedem internet e abrem a fonte original quando online.
-5. Testar favoritos, filtros combinados e tela de detalhes.
+- arquivos principais presentes;
+- `manifest.json`, `version.json`, `data/meta.json` e `data/imoveis.json` vÃ¡lidos;
+- base com 27 registros;
+- IDs Ãºnicos;
+- URLs de hospedagem Ãºnicas;
+- nomes de hospedagem sem duplicidade exata;
+- campos essenciais de nome, cidade, regiÃ£o, fonte e URL presentes;
+- Service Worker atualizado para a versÃ£o 9;
+- nova identidade visual neutra;
+- referÃªncias antigas de marca removidas dos arquivos atuais;
+- fotos externas dos anÃºncios removidas da base, mantendo o acesso Ã  fonte original;
+- favoritos, filtros, mapa esquemÃ¡tico, compartilhamento e instalaÃ§Ã£o PWA preservados.
+
+## ValidaÃ§Ã£o final recomendada apÃ³s publicaÃ§Ã£o
+
+Abra o site publicado no celular e no computador, teste busca, filtros, favoritos, menu, links externos, instalaÃ§Ã£o PWA e uma segunda abertura offline.
+
+As informaÃ§Ãµes das hospedagens podem mudar e devem ser confirmadas diretamente na fonte original.

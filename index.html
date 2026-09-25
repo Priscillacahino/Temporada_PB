@@ -4,30 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#6f8066">
-  <meta name="description" content="Amigos da Vênus: guia independente para ajudar quem não encontrou disponibilidade na Casa de Praia Vênus a pesquisar outras hospedagens no litoral sul da Paraíba.">
+  <meta name="description" content="Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba. Guia independente para pesquisar hospedagens e confirmar informaÃ§Ãµes diretamente na fonte original.">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Amigos da Vênus — Guia de hospedagens">
-  <meta property="og:description" content="Não conseguiu ficar na Casa de Praia Vênus? Compare outras hospedagens e confirme tudo diretamente na fonte original.">
+  <meta property="og:title" content="Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba">
+  <meta property="og:description" content="Pesquise opÃ§Ãµes de hospedagem e confirme disponibilidade, valores e regras diretamente na fonte original.">
   <meta property="og:url" content="https://temporada-pb.vercel.app/">
-  <meta property="og:image" content="https://temporada-pb.vercel.app/icons/icon-512.png">
+  <meta property="og:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.jpg">
   <meta property="og:locale" content="pt_BR">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Amigos da Vênus">
-  <meta name="twitter:description" content="Guia independente de hospedagens no litoral sul da Paraíba.">
-  <meta name="twitter:image" content="https://temporada-pb.vercel.app/icons/icon-512.png">
+  <meta name="twitter:title" content="Temporada PB">
+  <meta name="twitter:description" content="SugestÃ£o de hospedagem ParaÃ­ba â€” guia independente de apoio Ã  pesquisa.">
+  <meta name="twitter:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.jpg">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Amigos da Vênus">
+  <meta name="apple-mobile-web-app-title" content="Temporada PB">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260925">
 
-  <title>Amigos da Vênus</title>
+  <title>Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba</title>
 </head>
 
 <body id="top">
@@ -40,10 +40,12 @@
 
 <header class="hero">
   <div class="topbar">
-    <a class="brand" href="#top" aria-label="Amigos da Vênus, início">
-      <span class="brand-logo-frame" role="img" aria-label="Amigos da Vênus"></span>
-      <span>Amigos da Vênus</span>
-      
+    <a class="brand" href="#top" aria-label="Temporada PB, inÃ­cio">
+      <span class="brand-logo-frame" role="img" aria-label="Temporada PB"></span>
+      <span class="brand-text">
+        <strong>Temporada PB</strong>
+        <small>SugestÃ£o de hospedagem ParaÃ­ba</small>
+      </span>
     </a>
 
     <div class="top-actions">
@@ -54,12 +56,13 @@
 
   <div class="hero-layout">
     <div class="hero-copy">
-      <span class="eyebrow light">João Pessoa → Litoral Sul → Conde</span>
-      <h1>Se a Vênus estiver sem vaga, aqui você encontra outros cantinhos com boas energias.</h1><p>Um guia leve e acolhedor para encontrar hospedagens com clima de paz, conforto e aquele jeitinho de porto seguro para descansar.</p>
+      <span class="eyebrow light">JoÃ£o Pessoa â€¢ Litoral Sul â€¢ Conde</span>
+      <h1>Encontre opÃ§Ãµes de hospedagem e confirme tudo diretamente na fonte original.</h1>
+      <p>O Temporada PB organiza sugestÃµes de hospedagem para facilitar sua pesquisa, sem intermediar reservas, pagamentos ou contratos.</p>
 
       <div class="hero-actions">
-        <a href="#venusFirst" class="primary-link">Ver a primeira opção</a>
-        <a href="#resultsStart" class="secondary-link">Ver outras opções</a>
+        <a href="#resultsStart" class="primary-link">Ver hospedagens</a>
+        <a href="#mapSection" class="secondary-link">Ver regiÃµes</a>
         <button id="howBtn" class="secondary-link hero-button" type="button">Como funciona?</button>
       </div>
     </div>
@@ -67,7 +70,7 @@
     <div class="hero-card" aria-label="Resumo da base">
       <span class="mini-label">Amigos da Vênus</span>
       <strong id="heroTotal">27</strong>
-      <span>alternativas cadastradas</span>
+      <span>opÃ§Ãµes cadastradas</span>
       <div class="hero-card-line"><span>1</span><span>Vênus aparece primeiro</span></div>
       <div class="hero-card-line"><span>2</span><span>As demais levam à fonte original</span></div>
     </div>
@@ -81,35 +84,9 @@
     <div><span class="status-dot stale-dot"></span><b id="staleCount">0</b><span>desatualizadas</span></div>
     <p id="maintenanceText">A base acompanha a data da última conferência.</p>
   </section>
-
-  <section id="venusFirst" class="venus-first" aria-labelledby="venusFirstTitle">
-    <div class="venus-first-media">
-      <img id="venusMainImage"
-           src="icons/casa-venus-destaque.jpg"
-           alt="Casa de Praia Vênus"
-           width="900"
-           height="600"
-           decoding="async"
-           fetchpriority="high"
-           onerror="this.onerror=null;this.src='icons/icon-512.png'">
-      <span class="first-badge">Nossa primeira opção</span>
-    </div>
-
-    <div class="venus-first-copy">
-      <span class="eyebrow">Comece por aqui</span>
-      <h2 id="venusFirstTitle">Casa de Praia Vênus</h2>
-      <p>Se houver disponibilidade para sua data, essa é a primeira opção do guia. Se estiver ocupada, continue e veja outras hospedagens que podem atender você.</p>
-
-      <div class="venus-first-actions">
-        <a href="https://www.instagram.com/venuscasadepraiapb/" target="_blank" rel="noopener" class="venus-primary">Ver Casa de Praia Vênus ↗</a>
-        <a href="#resultsStart" class="venus-secondary">Ver alternativas</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="how-strip" aria-label="Como funciona">
-    <div><b>1</b><span>Confira a Vênus</span></div>
-    <div><b>2</b><span>Compare alternativas</span></div>
+<section class="how-strip" aria-label="Como funciona">
+    <div><b>1</b><span>Pesquise e filtre</span></div>
+    <div><b>2</b><span>Compare as opÃ§Ãµes</span></div>
     <div><b>3</b><span>Confirme na fonte original</span></div>
   </section>
 
@@ -170,7 +147,19 @@
     </div>
   </section>
 
-  <section id="filtersSection" class="panel filters-panel" aria-labelledby="filterTitle">
+  <section class="sorry-note" aria-label="Mensagem de acolhimento">
+    <h2>NÃ£o conseguiu fazer sua reserva? Ah, que pena! ðŸˆâ€â¬›ðŸ˜¿</h2>
+    <p>Esperamos que estas sugestÃµes ajudem vocÃª a encontrar uma hospedagem que combine com a sua viagem. Compare as opÃ§Ãµes e confirme tudo diretamente na fonte original.</p>
+  </section>
+<section id="resultsStart" class="results-head">
+    <div>
+      <span id="contextLabel" class="eyebrow">Outras opções para você</span>
+      <h2 id="resultTitle">Veja outras hospedagens</h2>
+    </div>
+    <p id="count" class="count"></p>
+  </section>
+
+<section id="filtersSection" class="panel filters-panel" aria-labelledby="filterTitle">
     <div class="section-head filter-head">
       <div>
         <span class="eyebrow">Encontre mais rápido</span>
@@ -245,14 +234,6 @@
     </div>
 
     <div id="activeFilters" class="active-filters" aria-live="polite"></div>
-  </section>
-
-  <section id="resultsStart" class="results-head">
-    <div>
-      <span id="contextLabel" class="eyebrow">Outras opções para você</span>
-      <h2 id="resultTitle">Veja outras hospedagens</h2>
-    </div>
-    <p id="count" class="count"></p>
   </section>
 
   <div id="loadingCards" class="skeleton-grid" aria-label="Carregando hospedagens">
