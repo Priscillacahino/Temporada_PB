@@ -7,7 +7,7 @@
   <meta name="description" content="Temporada PB reúne referências públicas de hospedagem na Paraíba e direciona você para a fonte original de cada opção.">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Temporada PB — Sugestão de hospedagem Paraíba">
+  <meta property="og:title" content="Temporada PB — Sugestões de hospedagem Paraíba">
   <meta property="og:description" content="Pesquise hospedagens na Paraíba e confirme disponibilidade, valores e regras diretamente na fonte original.">
   <meta property="og:url" content="https://temporada-pb.vercel.app/">
   <meta property="og:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.png">
@@ -15,7 +15,7 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Temporada PB">
-  <meta name="twitter:description" content="Sugestão de hospedagem Paraíba.">
+  <meta name="twitter:description" content="Sugestões de hospedagem Paraíba.">
   <meta name="twitter:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.png">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -26,8 +26,9 @@
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-v9_1.css">
 
-  <title>Temporada PB — Sugestão de hospedagem Paraíba</title>
+  <title>Temporada PB — Sugestões de hospedagem Paraíba</title>
 </head>
 
 <body id="top">
@@ -43,7 +44,7 @@
       <img class="brand-logo" src="icons/temporada-pb-logo.png" alt="" width="104" height="104">
       <span class="brand-copy">
         <strong>Temporada PB</strong>
-        <small>Sugestão de hospedagem Paraíba</small>
+        <small>Sugestões de hospedagem Paraíba</small>
       </span>
     </a>
 
@@ -90,21 +91,28 @@
     </div>
 
     <div class="quick-search">
-      <label class="field field-search">
-        <span data-i18n="search">Buscar</span>
-        <input id="q" type="search" autocomplete="off" placeholder="Nome, região ou cidade">
-      </label>
+      <div class="field field-search search-autocomplete">
+        <label for="q"><span data-i18n="search">Buscar</span></label>
+        <div class="search-input-wrap">
+          <input id="q" type="search" autocomplete="off" placeholder="Nome, região ou cidade" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="searchSuggestions">
+          <div id="searchSuggestions" class="search-suggestions" role="listbox" hidden></div>
+        </div>
+        <small class="field-hint" data-i18n="searchHint">Clique no campo para ver regiões e hospedagens disponíveis.</small>
+      </div>
 
       <label class="field">
         <span data-i18n="sort">Ordenar</span>
         <select id="sort">
           <option value="default" data-i18n="sortDefault">Ordem padrão</option>
+          <option value="distance" data-i18n="sortDistance">Mais perto do endereço-base</option>
           <option value="name" data-i18n="sortName">Nome A–Z</option>
           <option value="rating" data-i18n="sortRating">Melhor avaliação</option>
           <option value="capacity" data-i18n="sortCapacity">Maior capacidade</option>
         </select>
       </label>
     </div>
+
+    <p id="distanceNote" class="distance-note" data-i18n="distanceNote">Distâncias aproximadas por região. João Pessoa usa o Residencial Brise; Conde usa a Av. Beira Mar, 90, em Jacumã.</p>
 
     <button id="moreFiltersBtn" class="more-filters-btn" type="button" aria-expanded="false" data-i18n="moreFilters">+ Mais filtros</button>
 

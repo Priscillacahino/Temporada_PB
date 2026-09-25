@@ -1,7 +1,6 @@
 {
-  "version": "9.4.3",
+  "version": "9.1",
   "date": "2026-09-25",
   "name": "Temporada PB",
-  "subtitle": "Sugestão de hospedagem Paraíba",
-  "notes": "Auditoria final da identidade independente, documentação e consistência da base."
+  "notes": "Responsividade ampliada, filtros com contagem dinâmica, busca com sugestões visíveis e ordenação por distância aproximada aos endereços-base de João Pessoa e Conde."
 }

@@ -1,10 +1,11 @@
-const CACHE_STATIC = 'temporada-pb-v15-3-static';
-const CACHE_DATA = 'temporada-pb-v15-3-data';
+const CACHE_STATIC = 'temporada-pb-v15-static';
+const CACHE_DATA = 'temporada-pb-v15-data';
 
 const STATIC_ASSETS = [
   './',
   'index.html',
   'styles.css',
+  'styles-v9_1.css',
   'app.js',
   'manifest.json',
   'version.json',
@@ -18,24 +19,16 @@ const STATIC_ASSETS = [
 
 self.addEventListener('install', event => {
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE_STATIC).then(cache => cache.addAll(STATIC_ASSETS))
-  );
+  event.waitUntil(caches.open(CACHE_STATIC).then(cache => cache.addAll(STATIC_ASSETS)));
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    Promise.all([
-      caches.keys().then(keys =>
-        Promise.all(
-          keys
-            .filter(key => ![CACHE_STATIC, CACHE_DATA].includes(key))
-            .map(key => caches.delete(key))
-        )
-      ),
-      self.clients.claim()
-    ])
-  );
+  event.waitUntil(Promise.all([
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => ![CACHE_STATIC, CACHE_DATA].includes(key)).map(key => caches.delete(key))
+    )),
+    self.clients.claim()
+  ]));
 });
 
 async function networkFirst(request) {
@@ -54,16 +47,22 @@ async function networkFirst(request) {
   }
 }
 
-async function cacheFirst(request) {
+async function staleWhileRevalidate(request) {
   const cached = await caches.match(request);
-  if (cached) return cached;
+  const networkPromise = fetch(request).then(async response => {
+    if (response && response.ok) {
+      const cache = await caches.open(CACHE_STATIC);
+      cache.put(request, response.clone());
+    }
+    return response;
+  }).catch(() => null);
 
-  const response = await fetch(request);
-  if (response && response.ok) {
-    const cache = await caches.open(CACHE_STATIC);
-    cache.put(request, response.clone());
+  if (cached) {
+    networkPromise.catch(() => null);
+    return cached;
   }
-  return response;
+
+  return (await networkPromise) || Response.error();
 }
 
 self.addEventListener('fetch', event => {
@@ -82,5 +81,5 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  event.respondWith(cacheFirst(event.request));
+  event.respondWith(staleWhileRevalidate(event.request));
 });

@@ -23,11 +23,17 @@
       clear: 'Limpar',
       all: 'Todas',
       search: 'Buscar',
+      searchHint: 'Clique no campo para ver regiões e hospedagens disponíveis.',
       sort: 'Ordenar',
       sortDefault: 'Ordem padrão',
+      sortDistance: 'Mais perto do endereço-base',
       sortName: 'Nome A–Z',
       sortRating: 'Melhor avaliação',
       sortCapacity: 'Maior capacidade',
+      distanceNote: 'Distâncias aproximadas por região. João Pessoa usa o Residencial Brise; Conde usa a Av. Beira Mar, 90, em Jacumã.',
+      distance: 'Distância aproximada',
+      fromBrise: 'do Residencial Brise',
+      fromJacuma: 'da Av. Beira Mar, 90',
       moreFilters: '+ Mais filtros',
       lessFilters: '– Menos filtros',
       region: 'Região',
@@ -72,7 +78,11 @@
       infoText3: 'Para reservar, pagar ou confirmar qualquer condição, use exclusivamente o canal indicado na fonte original.',
       online: '● Online',
       offline: '● Offline',
-      installed: 'App pronto para instalar'
+      installed: 'App pronto para instalar',
+      suggestionRegion: 'Região',
+      suggestionStay: 'Hospedagem',
+      suggestionCity: 'Cidade',
+      noSuggestions: 'Nenhuma opção corresponde à busca.'
     },
     es: {
       heroEyebrow: 'Paraíba',
@@ -87,11 +97,17 @@
       clear: 'Limpiar',
       all: 'Todas',
       search: 'Buscar',
+      searchHint: 'Haz clic en el campo para ver regiones y alojamientos disponibles.',
       sort: 'Ordenar',
       sortDefault: 'Orden original',
+      sortDistance: 'Más cerca de la dirección base',
       sortName: 'Nombre A–Z',
       sortRating: 'Mejor valoración',
       sortCapacity: 'Mayor capacidad',
+      distanceNote: 'Distancias aproximadas por región. João Pessoa usa Residencial Brise; Conde usa Av. Beira Mar, 90, en Jacumã.',
+      distance: 'Distancia aproximada',
+      fromBrise: 'desde Residencial Brise',
+      fromJacuma: 'desde Av. Beira Mar, 90',
       moreFilters: '+ Más filtros',
       lessFilters: '– Menos filtros',
       region: 'Región',
@@ -136,8 +152,38 @@
       infoText3: 'Para reservar, pagar o confirmar cualquier condición, utiliza exclusivamente el canal indicado en la fuente original.',
       online: '● Online',
       offline: '● Offline',
-      installed: 'App listo para instalar'
+      installed: 'App listo para instalar',
+      suggestionRegion: 'Región',
+      suggestionStay: 'Alojamiento',
+      suggestionCity: 'Ciudad',
+      noSuggestions: 'Ninguna opción coincide con la búsqueda.'
     }
+  };
+
+  const DISTANCE_REFERENCE = {
+    'João Pessoa': { lat: -7.18064, lon: -34.85438, labelKey: 'fromBrise' },
+    'Conde': { lat: -7.27800, lon: -34.79900, labelKey: 'fromJacuma' }
+  };
+
+  // Coordenadas aproximadas de bairro/região. Os anúncios não informam endereço exato.
+  const REGION_COORDS = {
+    'Geisel': [-7.17791, -34.87079],
+    'Portal do Sol': [-7.14885, -34.81619],
+    'Seixas': [-7.15625, -34.79529],
+    'Barra de Gramame': [-7.21875, -34.81177],
+    'José Américo': [-7.17273, -34.85644],
+    'Mangabeira': [-7.16951, -34.83931],
+    'Rota do Sol / Litoral Sul': [-7.20577, -34.83324],
+    'Entorno UNIPÊ / UFPB': [-7.15915, -34.85442],
+    'Bancários / UFPB': [-7.14837, -34.83853],
+    'Jardim Cidade Universitária': [-7.15511, -34.83645],
+    'Cristo Redentor / acesso ao corredor': [-7.15939, -34.87573],
+    'Bancários': [-7.14837, -34.83853],
+    'Paratibe / Litoral Sul': [-7.20577, -34.83324],
+    'Zona Sul / acesso PB‑008': [-7.19500, -34.83500],
+    'Jacumã': [-7.27800, -34.79900],
+    'Praia do Amor / Jacumã': [-7.27422, -34.80132],
+    'Carapibus': [-7.299275, -34.799324]
   };
 
   let data = [];
@@ -155,6 +201,14 @@
       .replaceAll('>', '&gt;')
       .replaceAll('"', '&quot;')
       .replaceAll("'", '&#039;');
+  }
+
+  function normalizeText(value) {
+    return String(value ?? '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
   }
 
   function favorites() {
@@ -179,21 +233,17 @@
   function translateStatic() {
     $$('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
-      if (el.tagName === 'OPTION') {
-        el.textContent = t(key);
-      } else {
-        el.textContent = t(key);
-      }
+      el.textContent = t(key);
     });
 
     $('#q').placeholder = language === 'es' ? 'Nombre, región o ciudad' : 'Nome, região ou cidade';
     $('#networkBadge').textContent = navigator.onLine ? t('online') : t('offline');
     document.documentElement.lang = language === 'es' ? 'es' : 'pt-BR';
-
     $$('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === language));
 
     const expanded = $('#moreFiltersBtn').getAttribute('aria-expanded') === 'true';
     $('#moreFiltersBtn').textContent = expanded ? t('lessFilters') : t('moreFilters');
+    if (document.activeElement === $('#q')) updateSearchSuggestions();
   }
 
   function setLanguage(next) {
@@ -219,11 +269,11 @@
     if (regions.includes(current)) select.value = current;
   }
 
-  function summary() {
-    $('#totalCount').textContent = data.length;
-    $('#houseCount').textContent = data.filter(x => x.tipo === 'Casa').length;
-    $('#apartmentCount').textContent = data.filter(x => x.tipo === 'Apartamento').length;
-    $('#studioCount').textContent = data.filter(x => x.tipo === 'Estúdio').length;
+  function summary(list = data) {
+    $('#totalCount').textContent = list.length;
+    $('#houseCount').textContent = list.filter(x => x.tipo === 'Casa').length;
+    $('#apartmentCount').textContent = list.filter(x => x.tipo === 'Apartamento').length;
+    $('#studioCount').textContent = list.filter(x => x.tipo === 'Estúdio').length;
   }
 
   function activeFilterPills() {
@@ -242,10 +292,77 @@
     $('#activeFilters').innerHTML = pills.map(pill => `<span class="filter-pill">${escapeHtml(pill)}</span>`).join('');
   }
 
+  function haversineKm(lat1, lon1, lat2, lon2) {
+    const toRad = deg => deg * Math.PI / 180;
+    const R = 6371;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+
+  function distanceInfo(item) {
+    const ref = DISTANCE_REFERENCE[item.cidade];
+    const coords = REGION_COORDS[item.regiao];
+    if (!ref || !coords) return null;
+    const km = haversineKm(ref.lat, ref.lon, coords[0], coords[1]);
+    return { km, label: t(ref.labelKey) };
+  }
+
+  function formatDistance(km) {
+    if (km < 0.5) return '< 0,5 km';
+    return `≈ ${km.toLocaleString(language === 'es' ? 'es-ES' : 'pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} km`;
+  }
+
+  function suggestionEntries() {
+    const scoped = city ? data.filter(item => item.cidade === city) : data;
+    const entries = [];
+
+    uniqueSorted(scoped.map(item => item.regiao)).forEach(value => entries.push({ value, kind: t('suggestionRegion'), priority: 0 }));
+    if (!city) uniqueSorted(scoped.map(item => item.cidade)).forEach(value => entries.push({ value, kind: t('suggestionCity'), priority: 1 }));
+    uniqueSorted(scoped.map(item => item.nome)).forEach(value => entries.push({ value, kind: t('suggestionStay'), priority: 2 }));
+
+    return entries;
+  }
+
+  function updateSearchSuggestions() {
+    const box = $('#searchSuggestions');
+    const input = $('#q');
+    if (!box || !input) return;
+
+    const query = normalizeText(input.value);
+    const matches = suggestionEntries()
+      .filter(entry => !query || normalizeText(entry.value).includes(query))
+      .sort((a, b) => a.priority - b.priority || a.value.localeCompare(b.value, 'pt-BR'))
+      .slice(0, 36);
+
+    box.innerHTML = matches.length
+      ? matches.map(entry => `<button class="search-suggestion" type="button" role="option" data-search-value="${escapeHtml(entry.value)}"><strong>${escapeHtml(entry.value)}</strong><span class="search-suggestion-kind">${escapeHtml(entry.kind)}</span></button>`).join('')
+      : `<div class="search-suggestion-empty">${escapeHtml(t('noSuggestions'))}</div>`;
+
+    box.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeSearchSuggestions() {
+    const box = $('#searchSuggestions');
+    const input = $('#q');
+    if (box) box.hidden = true;
+    if (input) input.setAttribute('aria-expanded', 'false');
+  }
+
   function sortList(list) {
     const mode = $('#sort').value;
     const copy = [...list];
 
+    if (mode === 'distance') {
+      return copy.sort((a, b) => {
+        const da = distanceInfo(a)?.km ?? Number.POSITIVE_INFINITY;
+        const db = distanceInfo(b)?.km ?? Number.POSITIVE_INFINITY;
+        return da - db || a.nome.localeCompare(b.nome, 'pt-BR');
+      });
+    }
     if (mode === 'name') return copy.sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
     if (mode === 'rating') return copy.sort((a, b) => (b.nota || 0) - (a.nota || 0));
     if (mode === 'capacity') return copy.sort((a, b) => (b.hospedes || 0) - (a.hospedes || 0));
@@ -276,6 +393,11 @@
     if (item.quartos != null) stats.push(`${item.quartos} ${language === 'es' ? 'hab.' : 'quarto(s)'}`);
     if (item.banheiros != null) stats.push(`${item.banheiros} ${language === 'es' ? 'baño(s)' : 'banheiro(s)'}`);
 
+    const distance = distanceInfo(item);
+    const distanceHtml = distance
+      ? `<div class="distance-badge" title="${escapeHtml(t('distanceNote'))}">↔ ${escapeHtml(formatDistance(distance.km))} ${escapeHtml(distance.label)}</div>`
+      : '';
+
     return `<article class="card" data-id="${escapeHtml(item.id)}">
       <div class="card-media">
         ${media}
@@ -283,6 +405,7 @@
       </div>
       <div class="card-body">
         <div class="location">📍 ${escapeHtml(item.regiao)} · ${escapeHtml(item.cidade)}</div>
+        ${distanceHtml}
         <h3>${escapeHtml(item.nome)}</h3>
         <p class="card-description">${escapeHtml(item.detalhe || '')}</p>
         ${stats.length ? `<div class="stats">${stats.map(x => `<span class="stat">${escapeHtml(x)}</span>`).join('')}</div>` : ''}
@@ -300,19 +423,19 @@
 
   function filteredList() {
     const favs = favorites();
-    const q = $('#q').value.trim().toLowerCase();
+    const q = normalizeText($('#q').value);
     const region = $('#reg').value;
     const type = $('#type').value;
     const cap = +$('#cap').value;
 
     return data.filter(item => {
-      const haystack = `${item.nome} ${item.regiao} ${item.cidade} ${item.tipo} ${item.fonte}`.toLowerCase();
+      const haystack = normalizeText(`${item.nome} ${item.regiao} ${item.cidade} ${item.tipo} ${item.fonte}`);
 
       return (!city || item.cidade === city)
         && (!q || haystack.includes(q))
         && (!region || item.regiao === region)
         && (!type || item.tipo === type)
-        && (!cap || item.hospedes == null || item.hospedes >= cap)
+        && (!cap || (item.hospedes != null && item.hospedes >= cap))
         && (!$('#pool').checked || item.piscina === true)
         && (!$('#pet').checked || item.pet === true)
         && (!$('#parking').checked || item.estacionamento === true)
@@ -323,7 +446,9 @@
 
   function render() {
     activeFilterPills();
-    const list = sortList(filteredList());
+    const filtered = filteredList();
+    summary(filtered);
+    const list = sortList(filtered);
     $('#resultCount').textContent = `${list.length} ${list.length === 1 ? t('countOne') : t('countMany')}`;
 
     if (!list.length) {
@@ -344,6 +469,7 @@
     ['pool', 'pet', 'parking', 'air', 'fav'].forEach(id => { $('#' + id).checked = false; });
     $$('.city-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.city === ''));
     populateRegions();
+    closeSearchSuggestions();
     render();
   }
 
@@ -361,6 +487,7 @@
 
     const fav = favorites().has(item.id);
     const body = $('#detailBody');
+    const distance = distanceInfo(item);
 
     const image = item.imagem
       ? `<img class="detail-photo" src="${escapeHtml(item.imagem)}" alt="${escapeHtml(item.nome)}" loading="lazy" referrerpolicy="no-referrer">`
@@ -369,6 +496,8 @@
     const rating = item.nota != null
       ? `★ ${String(item.nota).replace('.', ',')}${item.reviews != null ? ` · ${item.reviews}` : ''}`
       : t('notInSource');
+
+    const distanceValue = distance ? `${formatDistance(distance.km)} ${distance.label}` : t('notInSource');
 
     body.innerHTML = `
       ${image}
@@ -381,6 +510,7 @@
         <div class="detail-box"><b>${t('rooms')}</b><span>${detailValue(item.quartos)}</span></div>
         <div class="detail-box"><b>${t('baths')}</b><span>${detailValue(item.banheiros)}</span></div>
         <div class="detail-box"><b>${t('rating')}</b><span>${escapeHtml(rating)}</span></div>
+        <div class="detail-box"><b>${t('distance')}</b><span>${escapeHtml(distanceValue)}</span></div>
         <div class="detail-box"><b>${t('source')}</b><span>${escapeHtml(item.fonte)}</span></div>
         <div class="detail-box"><b>${t('lastCheck')}</b><span>${escapeHtml(item.verificado || t('notInSource'))}</span></div>
       </div>
@@ -391,7 +521,7 @@
         <button class="detail-share" type="button" data-detail-action="share" data-id="${escapeHtml(item.id)}">${t('share')}</button>
       </div>
 
-      <div class="detail-note">${t('detailNote')}</div>
+      <div class="detail-note">${t('detailNote')} ${t('distanceNote')}</div>
     `;
 
     openModal($('#detailModal'));
@@ -449,6 +579,14 @@
     showToast.timer = setTimeout(() => toast.classList.add('hidden'), 2300);
   }
 
+  function setAdvancedFilters(open) {
+    const box = $('#advancedFilters');
+    box.hidden = !open;
+    box.classList.toggle('is-open', open);
+    $('#moreFiltersBtn').setAttribute('aria-expanded', String(open));
+    $('#moreFiltersBtn').textContent = open ? t('lessFilters') : t('moreFilters');
+  }
+
   function setupEvents() {
     $$('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
 
@@ -457,22 +595,38 @@
       $$('.city-btn').forEach(x => x.classList.toggle('active', x === btn));
       populateRegions();
       render();
+      if (document.activeElement === $('#q')) updateSearchSuggestions();
     }));
 
-    ['q', 'reg', 'type', 'cap', 'sort', 'pool', 'pet', 'parking', 'air', 'fav'].forEach(id => {
-      const el = $('#' + id);
-      const eventName = el?.matches('input[type="search"]') ? 'input' : 'change';
-      el?.addEventListener(eventName, render);
+    ['reg', 'type', 'cap', 'sort', 'pool', 'pet', 'parking', 'air', 'fav'].forEach(id => {
+      $('#' + id)?.addEventListener('change', render);
+    });
+
+    $('#q').addEventListener('focus', updateSearchSuggestions);
+    $('#q').addEventListener('input', () => {
+      render();
+      updateSearchSuggestions();
+    });
+    $('#q').addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeSearchSuggestions();
+    });
+    $('#q').addEventListener('blur', () => setTimeout(closeSearchSuggestions, 160));
+
+    $('#searchSuggestions').addEventListener('mousedown', event => event.preventDefault());
+    $('#searchSuggestions').addEventListener('click', event => {
+      const option = event.target.closest('[data-search-value]');
+      if (!option) return;
+      $('#q').value = option.dataset.searchValue;
+      closeSearchSuggestions();
+      render();
+      $('#q').focus();
     });
 
     $('#resetFilters').addEventListener('click', resetFilters);
 
     $('#moreFiltersBtn').addEventListener('click', () => {
-      const box = $('#advancedFilters');
-      const open = box.hidden;
-      box.hidden = !open;
-      $('#moreFiltersBtn').setAttribute('aria-expanded', String(open));
-      $('#moreFiltersBtn').textContent = open ? t('lessFilters') : t('moreFilters');
+      const open = $('#moreFiltersBtn').getAttribute('aria-expanded') !== 'true';
+      setAdvancedFilters(open);
     });
 
     $('#results').addEventListener('click', event => {
@@ -540,6 +694,7 @@
   async function init() {
     setupEvents();
     setupInstall();
+    setAdvancedFilters(false);
     translateStatic();
     updateNetwork();
 
@@ -556,10 +711,10 @@
       meta = metadata || {};
       $('#loadingCards')?.remove();
       populateRegions();
-      summary();
       render();
     } catch {
       $('#loadingCards')?.remove();
+      summary([]);
       $('#results').innerHTML = '<div class="empty"><b>Não foi possível carregar as hospedagens.</b><p>Tente atualizar a página.</p></div>';
     }
 
