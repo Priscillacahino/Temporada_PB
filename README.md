@@ -1,80 +1,76 @@
-# Temporada PB ðŸ¡ ðŸŒ´
+# Temporada PB 🌴
 
 <p align="center">
-  <img src="./icons/temporada-pb-logo.jpg" alt="Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba" width="420">
+  <img src="./icons/temporada-pb-logo.png" alt="Temporada PB — Sugestões de hospedagem Paraíba" width="420">
 </p>
 
 <p align="center">
-  <strong>SugestÃ£o de hospedagem ParaÃ­ba</strong>
+  <strong>Sugestões de hospedagem Paraíba</strong>
 </p>
 
 <p align="center">
-  Um guia independente para organizar a pesquisa de hospedagens e levar vocÃª atÃ© a fonte original.
+  Referências públicas organizadas para facilitar a pesquisa e o acesso à fonte original de cada hospedagem.
 </p>
 
 ---
 
 ## Sobre
 
-O **Temporada PB** Ã© um projeto independente criado para facilitar a pesquisa de hospedagens na ParaÃ­ba.
+O **Temporada PB** é um projeto pessoal criado para organizar referências públicas de hospedagem na Paraíba em uma interface simples e adaptada para celular.
 
-A proposta Ã© reunir opÃ§Ãµes encontradas em perfis oficiais e plataformas de hospedagem, permitindo comparar informaÃ§Ãµes bÃ¡sicas antes de seguir para a fonte original.
+A proposta é facilitar a pesquisa sem substituir os canais responsáveis pelos anúncios ou perfis apresentados.
 
-O projeto **nÃ£o realiza reservas, nÃ£o recebe pagamentos, nÃ£o intermedeia contratos e nÃ£o garante disponibilidade, preÃ§os ou condiÃ§Ãµes anunciadas por terceiros**.
-
-> **IndependÃªncia de marca:** o Temporada PB nÃ£o possui vÃ­nculo com a marca VÃªnus. NÃ£o Ã© produto, extensÃ£o, serviÃ§o, canal de reservas, parceria, representaÃ§Ã£o ou indicaÃ§Ã£o oficial da marca VÃªnus.
+Cada opção direciona para a **fonte original**, onde devem ser confirmados disponibilidade, valores, localização, regras, políticas e demais condições.
 
 ---
 
-## ðŸŒ¿ Como funciona
+## 🌿 Como funciona
 
-1. Consulte as opÃ§Ãµes cadastradas.
-2. Use filtros de regiÃ£o, capacidade e caracterÃ­sticas.
-3. Confira os dados disponÃ­veis no guia.
-4. Abra o perfil, site ou anÃºncio original da hospedagem.
-5. Confirme diretamente na fonte original disponibilidade, valores, datas, regras, localizaÃ§Ã£o e comodidades.
-
----
-
-## ðŸ¡ O que vocÃª encontra
-
-- casas, apartamentos e estÃºdios;
-- filtros por regiÃ£o e caracterÃ­sticas;
-- favoritos armazenados no navegador;
-- indicaÃ§Ã£o da origem da informaÃ§Ã£o;
-- acesso direto Ã  fonte original;
-- experiÃªncia adaptada para celular;
-- instalaÃ§Ã£o como PWA em dispositivos compatÃ­veis;
-- acesso offline aos arquivos jÃ¡ armazenados pelo aplicativo.
+1. Escolha a cidade.
+2. Pesquise por nome, região ou tipo de hospedagem.
+3. Use os filtros complementares quando necessário.
+4. Abra os detalhes da opção desejada.
+5. Acesse a **fonte original** para confirmar informações e realizar qualquer contato ou contratação.
 
 ---
 
-## ðŸŒŠ Importante
+## 🏡 O que você encontra
 
-O **Temporada PB** funciona apenas como apoio Ã  pesquisa.
-
-As hospedagens listadas sÃ£o independentes. A presenÃ§a de uma opÃ§Ã£o no guia nÃ£o representa parceria, recomendaÃ§Ã£o comercial, garantia de qualidade ou intermediaÃ§Ã£o.
-
-Antes de qualquer reserva, confirme todas as informaÃ§Ãµes diretamente com a hospedagem ou plataforma responsÃ¡vel pelo anÃºncio.
-
----
-
-## ðŸ“± Acesse
-
-ðŸ‘‰ **https://temporada-pb.vercel.app/**
-
----
-
-## ðŸ› ï¸ Tecnologias
-
-HTML5, CSS3, JavaScript, JSON, PWA, Service Worker, LocalStorage e Vercel.
+- referências de hospedagem em João Pessoa e Conde;
+- casas, apartamentos e estúdios;
+- pesquisa por cidade e região;
+- filtros de capacidade e comodidades;
+- favoritos armazenados no próprio dispositivo;
+- acesso direto à fonte original;
+- campos ausentes identificados sem inventar informações;
+- layout responsivo para celular;
+- instalação como PWA em navegadores compatíveis;
+- interface em português e espanhol.
 
 ---
 
-## ðŸ‘©â€ðŸ’» Projeto
+## 🔎 Transparência
 
-Projeto pessoal desenvolvido por **Priscilla Cahino** com foco em organizaÃ§Ã£o de informaÃ§Ãµes, experiÃªncia do usuÃ¡rio e acesso simplificado Ã s fontes originais.
+O **Temporada PB** apenas organiza links e informações públicas.
+
+O projeto não representa, administra ou intermedeia as hospedagens exibidas e não recebe pagamento ou benefício pela presença das opções.
+
+A presença de uma hospedagem no projeto não representa parceria, preferência ou recomendação.
+
+Disponibilidade, valores, localização, regras, políticas, pagamento e contratação devem ser confirmados exclusivamente na **fonte original**.
 
 ---
+
+## 📱 Acesse
+
+**https://temporada-pb.vercel.app/**
+
+O projeto pode ser aberto pelo celular e, em navegadores compatíveis, instalado como aplicativo.
+
+---
+
+## 💛 Projeto
+
+Projeto pessoal desenvolvido para facilitar a pesquisa de hospedagens na Paraíba.
 
 **Desenvolvido por Priscilla Cahino**

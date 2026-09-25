@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#6f8066">
-  <meta name="description" content="Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba. Guia independente para pesquisar hospedagens e confirmar informaÃ§Ãµes diretamente na fonte original.">
+  <meta name="theme-color" content="#61705b">
+  <meta name="description" content="Temporada PB reúne referências públicas de hospedagem na Paraíba e direciona você para a fonte original de cada opção.">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba">
-  <meta property="og:description" content="Pesquise opÃ§Ãµes de hospedagem e confirme disponibilidade, valores e regras diretamente na fonte original.">
+  <meta property="og:title" content="Temporada PB — Sugestões de hospedagem Paraíba">
+  <meta property="og:description" content="Pesquise hospedagens na Paraíba e confirme disponibilidade, valores e regras diretamente na fonte original.">
   <meta property="og:url" content="https://temporada-pb.vercel.app/">
-  <meta property="og:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.jpg">
+  <meta property="og:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.png">
   <meta property="og:locale" content="pt_BR">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Temporada PB">
-  <meta name="twitter:description" content="SugestÃ£o de hospedagem ParaÃ­ba â€” guia independente de apoio Ã  pesquisa.">
-  <meta name="twitter:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.jpg">
+  <meta name="twitter:description" content="Sugestões de hospedagem Paraíba.">
+  <meta name="twitter:image" content="https://temporada-pb.vercel.app/icons/temporada-pb-logo.png">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Temporada PB">
@@ -25,162 +25,107 @@
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="stylesheet" href="styles.css?v=20260925">
+  <link rel="stylesheet" href="styles.css">
 
-  <title>Temporada PB â€” SugestÃ£o de hospedagem ParaÃ­ba</title>
+  <title>Temporada PB — Sugestões de hospedagem Paraíba</title>
 </head>
 
 <body id="top">
-
-<a class="skip-link" href="#resultsStart">Pular para as hospedagens</a>
+<a class="skip-link" href="#searchSection">Pular para a pesquisa</a>
 
 <div id="offlineBanner" class="offline-banner hidden" role="status" aria-live="polite">
-  Você está offline. Exibindo as informações salvas da última visita.
+  Você está offline. Algumas informações podem ser exibidas a partir do último acesso.
 </div>
 
-<header class="hero">
+<header class="site-header">
   <div class="topbar">
-    <a class="brand" href="#top" aria-label="Temporada PB, inÃ­cio">
-      <span class="brand-logo-frame" role="img" aria-label="Temporada PB"></span>
-      <span class="brand-text">
+    <a class="brand" href="#top" aria-label="Temporada PB, início">
+      <img class="brand-logo" src="icons/temporada-pb-logo.png" alt="" width="104" height="104">
+      <span class="brand-copy">
         <strong>Temporada PB</strong>
-        <small>SugestÃ£o de hospedagem ParaÃ­ba</small>
+        <small>Sugestões de hospedagem Paraíba</small>
       </span>
     </a>
 
-    <div class="top-actions">
-      <span id="networkBadge" class="network online">● Online</span>
-      <button id="installBtn" class="ghost hidden" type="button">Instalar app</button>
+    <button id="menuBtn" class="menu-btn" type="button" aria-expanded="false" aria-controls="headerActions" aria-label="Abrir menu">☰</button>
+
+    <div id="headerActions" class="header-actions">
+      <div class="language-switch" aria-label="Idioma">
+        <button class="lang-btn active" type="button" data-lang="pt" aria-label="Português">🇧🇷</button>
+        <button class="lang-btn" type="button" data-lang="es" aria-label="Español">🇪🇸</button>
+      </div>
+      <span id="networkBadge" class="network-badge">● Online</span>
+      <button id="installBtn" class="secondary-btn hidden" type="button">Instalar app</button>
     </div>
   </div>
 
-  <div class="hero-layout">
-    <div class="hero-copy">
-      <span class="eyebrow light">JoÃ£o Pessoa â€¢ Litoral Sul â€¢ Conde</span>
-      <h1>Encontre opÃ§Ãµes de hospedagem e confirme tudo diretamente na fonte original.</h1>
-      <p>O Temporada PB organiza sugestÃµes de hospedagem para facilitar sua pesquisa, sem intermediar reservas, pagamentos ou contratos.</p>
-
-      <div class="hero-actions">
-        <a href="#resultsStart" class="primary-link">Ver hospedagens</a>
-        <a href="#mapSection" class="secondary-link">Ver regiÃµes</a>
-        <button id="howBtn" class="secondary-link hero-button" type="button">Como funciona?</button>
-      </div>
-    </div>
-
-    <div class="hero-card" aria-label="Resumo da base">
-      <span class="mini-label">Amigos da Vênus</span>
-      <strong id="heroTotal">27</strong>
-      <span>opÃ§Ãµes cadastradas</span>
-      <div class="hero-card-line"><span>1</span><span>Vênus aparece primeiro</span></div>
-      <div class="hero-card-line"><span>2</span><span>As demais levam à fonte original</span></div>
-    </div>
+  <div class="hero-copy">
+    <span class="eyebrow light" data-i18n="heroEyebrow">Paraíba</span>
+    <h1 data-i18n="heroTitle">Hospedagens para pesquisar com mais facilidade.</h1>
+    <p data-i18n="heroText">Reunimos referências públicas em um só lugar. Você consulta as opções e segue para a fonte original para confirmar todos os detalhes.</p>
+    <a class="primary-btn" href="#searchSection" data-i18n="heroCta">Pesquisar hospedagens</a>
   </div>
 </header>
 
 <main>
-  <section class="maintenance-strip" aria-label="Atualização da base">
-    <div><span class="status-dot active-dot"></span><b id="activeCount">0</b><span>conferidas</span></div>
-    <div><span class="status-dot review-dot"></span><b id="reviewCount">0</b><span>para revisar</span></div>
-    <div><span class="status-dot stale-dot"></span><b id="staleCount">0</b><span>desatualizadas</span></div>
-    <p id="maintenanceText">A base acompanha a data da última conferência.</p>
-  </section>
-<section class="how-strip" aria-label="Como funciona">
-    <div><b>1</b><span>Pesquise e filtre</span></div>
-    <div><b>2</b><span>Compare as opÃ§Ãµes</span></div>
-    <div><b>3</b><span>Confirme na fonte original</span></div>
+  <section class="welcome-block" aria-labelledby="welcomeTitle">
+    <span class="eyebrow" data-i18n="welcomeEyebrow">Outras opções para você</span>
+    <h2 id="welcomeTitle" data-i18n="welcomeTitle">Não encontrou a hospedagem que procurava? Ah, que pena!</h2>
+    <p data-i18n="welcomeText">Para não deixar você sem opções, reunimos algumas referências públicas que podem ajudar na pesquisa. Consulte sempre a fonte original antes de reservar.</p>
   </section>
 
-  <section class="summary-strip" aria-label="Resumo das hospedagens">
-    <div><b id="countHouse">0</b><span>casas</span></div>
-    <div><b id="countApartment">0</b><span>apartamentos</span></div>
-    <div><b id="countStudio">0</b><span>estúdios</span></div>
-    <div><b id="countOfficial">0</b><span>perfis oficiais</span></div>
-  </section>
-
-  <section id="mapSection" class="panel map-panel" aria-labelledby="mapTitle">
+  <section id="searchSection" class="panel search-panel" aria-labelledby="searchTitle">
     <div class="section-head">
       <div>
-        <span class="eyebrow">Regiões do guia</span>
-        <h2 id="mapTitle">Do José Américo a Jacumã</h2>
+        <span class="eyebrow" data-i18n="searchEyebrow">Encontre mais rápido</span>
+        <h2 id="searchTitle" data-i18n="searchTitle">Onde você quer ficar?</h2>
       </div>
-      <div class="map-head-actions">
-        <button class="text-btn" id="toggleMap" type="button" aria-expanded="true">Ocultar mapa</button>
-        <button class="text-btn" id="clearMap" type="button">Limpar</button>
-      </div>
+      <button id="resetFilters" class="text-btn" type="button" data-i18n="clear">Limpar</button>
     </div>
 
-    <div id="mapContent">
-      <p class="help">Mapa esquemático: representa regiões, não endereços exatos.</p>
-      <div class="route-map" role="group" aria-label="Corredor de busca">
-        <div class="route-line" aria-hidden="true"></div>
-        <button class="map-node" data-near="jose"><span>1</span><b>José Américo</b></button>
-        <button class="map-node" data-near="geisel"><span>2</span><b>Geisel</b></button>
-        <button class="map-node" data-near="bancarios"><span>3</span><b>Bancários / UFPB</b></button>
-        <button class="map-node" data-near="mangabeira"><span>4</span><b>Mangabeira</b></button>
-        <button class="map-node muted-node" data-near="quadramares"><span>5</span><b>Quadramares</b><em>entorno</em></button>
-        <button class="map-node" data-near="portal"><span>6</span><b>Portal do Sol</b></button>
-        <button class="map-node muted-node" data-near="penha"><span>7</span><b>Penha</b><em>entorno</em></button>
-        <button class="map-node" data-near="seixas"><span>8</span><b>Seixas</b></button>
-        <button class="map-node" data-near="barra"><span>9</span><b>Barra de Gramame</b></button>
-        <button class="map-node" data-near="pb008"><span>10</span><b>PB-008</b></button>
-        <button class="map-node" data-near="conde"><span>11</span><b>Conde / Jacumã</b></button>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel near-panel" aria-labelledby="nearTitle">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Escolha uma região</span>
-        <h2 id="nearTitle">Perto de…</h2>
-      </div>
+    <div class="city-buttons" role="group" aria-label="Cidade">
+      <button class="city-btn active" type="button" data-city="" data-i18n="all">Todas</button>
+      <button class="city-btn" type="button" data-city="João Pessoa">João Pessoa</button>
+      <button class="city-btn" type="button" data-city="Conde">Conde</button>
     </div>
 
-    <div class="near-chips">
-      <button class="near-chip active" data-near="all">Todas</button>
-      <button class="near-chip" data-near="jose">📍 José Américo</button>
-      <button class="near-chip" data-near="casa-lina">★ Casa Lina</button>
-      <button class="near-chip" data-near="seixas">🌊 Seixas</button>
-      <button class="near-chip" data-near="barra">🏖️ Barra de Gramame</button>
-      <button class="near-chip" data-near="pb008">🛣️ PB-008</button>
-      <button class="near-chip" data-near="conde">🌴 Conde / Jacumã</button>
-    </div>
-  </section>
-
-  <section class="sorry-note" aria-label="Mensagem de acolhimento">
-    <h2>NÃ£o conseguiu fazer sua reserva? Ah, que pena! ðŸˆâ€â¬›ðŸ˜¿</h2>
-    <p>Esperamos que estas sugestÃµes ajudem vocÃª a encontrar uma hospedagem que combine com a sua viagem. Compare as opÃ§Ãµes e confirme tudo diretamente na fonte original.</p>
-  </section>
-<section id="resultsStart" class="results-head">
-    <div>
-      <span id="contextLabel" class="eyebrow">Outras opções para você</span>
-      <h2 id="resultTitle">Veja outras hospedagens</h2>
-    </div>
-    <p id="count" class="count"></p>
-  </section>
-
-<section id="filtersSection" class="panel filters-panel" aria-labelledby="filterTitle">
-    <div class="section-head filter-head">
-      <div>
-        <span class="eyebrow">Encontre mais rápido</span>
-        <h2 id="filterTitle">O que você procura?</h2>
-      </div>
-      <button class="text-btn" id="resetFilters" type="button">Limpar</button>
-    </div>
-
-    <div class="quick-filters">
+    <div class="quick-search">
       <label class="field field-search">
-        <span>Buscar</span>
-        <input id="q" placeholder="Nome, região ou cidade" autocomplete="off">
+        <span data-i18n="search">Buscar</span>
+        <input id="q" type="search" autocomplete="off" placeholder="Nome, região ou cidade">
       </label>
 
       <label class="field">
-        <span>Região</span>
+        <span data-i18n="sort">Ordenar</span>
+        <select id="sort">
+          <option value="default" data-i18n="sortDefault">Ordem padrão</option>
+          <option value="name" data-i18n="sortName">Nome A–Z</option>
+          <option value="rating" data-i18n="sortRating">Melhor avaliação</option>
+          <option value="capacity" data-i18n="sortCapacity">Maior capacidade</option>
+        </select>
+      </label>
+    </div>
+
+    <button id="moreFiltersBtn" class="more-filters-btn" type="button" aria-expanded="false" data-i18n="moreFilters">+ Mais filtros</button>
+
+    <div id="advancedFilters" class="advanced-filters" hidden>
+      <label class="field">
+        <span data-i18n="region">Região</span>
         <select id="reg"><option value="">Todas</option></select>
       </label>
 
       <label class="field">
-        <span>Hóspedes</span>
+        <span data-i18n="type">Tipo</span>
+        <select id="type">
+          <option value="">Todos</option>
+          <option value="Casa">Casa</option>
+          <option value="Apartamento">Apartamento</option>
+          <option value="Estúdio">Estúdio</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span data-i18n="guests">Hóspedes</span>
         <select id="cap">
           <option value="0">Qualquer</option>
           <option value="2">2+</option>
@@ -191,91 +136,55 @@
         </select>
       </label>
 
-      <label class="quick-check"><input id="pool" type="checkbox"> 🏊 Piscina</label>
-      <label class="quick-check"><input id="pet" type="checkbox"> 🐾 Pet</label>
-      <label class="quick-check"><input id="fav" type="checkbox"> ♥ Favoritos</label>
-    </div>
-
-    <button id="moreFiltersBtn" class="more-filters-btn" type="button" aria-expanded="false">+ Mais filtros</button>
-
-    <div id="advancedFilters" class="advanced-filters" hidden>
-      <label class="field">
-        <span>Tipo</span>
-        <select id="type"><option value="">Todos</option><option>Casa</option><option>Apartamento</option><option>Estúdio</option></select>
-      </label>
-
-      <label class="field">
-        <span>Quartos</span>
-        <select id="beds"><option value="0">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
-      </label>
-
-      <label class="field">
-        <span>Banheiros</span>
-        <select id="baths"><option value="0">Qualquer</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option></select>
-      </label>
-
-      <label class="field">
-        <span>Onde encontramos</span>
-        <select id="source"><option value="">Todas</option><option value="official">Perfil oficial</option><option value="external">Plataforma/anúncio</option></select>
-      </label>
-
-      <label class="field">
-        <span>Atualização</span>
-        <select id="maint"><option value="">Todas</option><option value="Ativo">Informação conferida</option><option value="Revisar">Revisar</option><option value="Desatualizado">Desatualizada</option></select>
-      </label>
-
-      <label class="field">
-        <span>Ordenar</span>
-        <select id="sort"><option value="recommended">Sugestões do guia</option><option value="rating">Melhor avaliação</option><option value="capacity">Maior capacidade</option><option value="name">Nome A–Z</option></select>
-      </label>
-
-      <label class="quick-check"><input id="parking" type="checkbox"> 🚗 Estacionamento</label>
-      <label class="quick-check"><input id="air" type="checkbox"> ❄️ Ar-condicionado</label>
+      <label class="filter-check"><input id="pool" type="checkbox"> <span data-i18n="pool">Piscina</span></label>
+      <label class="filter-check"><input id="pet" type="checkbox"> <span>Pet</span></label>
+      <label class="filter-check"><input id="parking" type="checkbox"> <span data-i18n="parking">Estacionamento</span></label>
+      <label class="filter-check"><input id="air" type="checkbox"> <span data-i18n="air">Ar-condicionado</span></label>
+      <label class="filter-check"><input id="fav" type="checkbox"> <span data-i18n="favorites">Favoritos</span></label>
     </div>
 
     <div id="activeFilters" class="active-filters" aria-live="polite"></div>
   </section>
 
-  <div id="loadingCards" class="skeleton-grid" aria-label="Carregando hospedagens">
+  <section class="summary-strip" aria-label="Resumo">
+    <div><b id="totalCount">0</b><span data-i18n="options">opções</span></div>
+    <div><b id="houseCount">0</b><span data-i18n="houses">casas</span></div>
+    <div><b id="apartmentCount">0</b><span data-i18n="apartments">apartamentos</span></div>
+    <div><b id="studioCount">0</b><span data-i18n="studios">estúdios</span></div>
+  </section>
+
+  <section class="results-head" aria-labelledby="resultsTitle">
+    <div>
+      <span class="eyebrow" data-i18n="resultsEyebrow">Resultados</span>
+      <h2 id="resultsTitle" data-i18n="resultsTitle">Hospedagens encontradas</h2>
+    </div>
+    <p id="resultCount" class="result-count" aria-live="polite"></p>
+  </section>
+
+  <div id="loadingCards" class="skeleton-grid" aria-label="Carregando">
     <div class="skeleton-card"></div>
     <div class="skeleton-card"></div>
     <div class="skeleton-card"></div>
   </div>
 
-  <div id="resultsGroups"></div>
+  <div id="results" class="grid"></div>
 
-  <aside class="install-hint" id="installHint">
+  <aside class="notice" aria-labelledby="noticeTitle">
     <div>
-      <b>Use como aplicativo</b>
-      <p>Instale no celular para abrir mais rápido e continuar acessando as informações já salvas mesmo sem internet.</p>
+      <span class="eyebrow" data-i18n="noticeEyebrow">Transparência</span>
+      <h2 id="noticeTitle" data-i18n="noticeTitle">Sobre o Temporada PB</h2>
     </div>
-    <button id="installHintClose" type="button" aria-label="Fechar aviso de instalação">×</button>
-  </aside>
-
-  <aside class="notice compact-notice">
-    <div>
-      <b>Sobre este guia</b>
-      <p>O Amigos da Vênus ajuda na pesquisa. Não realiza reservas nem recebe pagamentos.</p>
-      <button id="aboutGuideBtn" class="notice-link" type="button">Ler aviso completo</button>
-    </div>
-
-    <div>
-      <b>Antes de reservar</b>
-      <p>Valores, disponibilidade, regras, localização e comodidades devem ser confirmados na fonte original.</p>
-    </div>
+    <p data-i18n="noticeText">O Temporada PB apenas organiza links e informações públicas. Não representa, administra ou intermedeia as hospedagens exibidas e não recebe pagamento ou benefício pela presença das opções. Disponibilidade, valores, localização, regras e contratação devem ser confirmados exclusivamente na fonte original.</p>
+    <button id="aboutBtn" class="text-btn" type="button" data-i18n="learnMore">Entenda como funciona</button>
   </aside>
 </main>
 
 <button id="backToTop" class="back-to-top" type="button" aria-label="Voltar ao topo">↑</button>
 
-<nav class="mobile-nav" aria-label="Navegação rápida">
-  <a href="#top"><span>⌂</span>Início</a>
-  <a href="#mapSection"><span>⌖</span>Mapa</a>
-  <a href="#filtersSection"><span>☷</span>Filtros</a>
-  <button id="mobileFav" type="button"><span>♥</span>Favoritos</button>
-</nav>
-
-<footer>Amigos da Vênus · Guia independente de apoio à pesquisa</footer>
+<footer>
+  <strong>Temporada PB</strong>
+  <span data-i18n="footerText">Referências públicas de hospedagem na Paraíba.</span>
+</footer>
 
 <div id="detailModal" class="modal" aria-hidden="true">
   <div class="modal-backdrop" data-close-detail></div>
@@ -287,11 +196,13 @@
 
 <div id="infoModal" class="modal" aria-hidden="true">
   <div class="modal-backdrop" data-close-info></div>
-  <section class="modal-panel info-panel" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+  <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
     <button class="modal-close" type="button" aria-label="Fechar" data-close-info>×</button>
     <div id="infoBody"></div>
   </section>
 </div>
+
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
 <script src="app.js"></script>
 </body>

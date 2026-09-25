@@ -1,12 +1,11 @@
 {
-  "versao": "9.2",
+  "versao": "9.0",
   "ultimaAtualizacao": "2026-09-25",
   "totalRegistros": 27,
   "politicaRevisao": {
     "revisarAposDias": 30,
     "desatualizadoAposDias": 60
   },
-  "nomeProjeto": "Temporada PB",
-  "subtitulo": "SugestÃ£o de hospedagem ParaÃ­ba",
-  "modelo": "Guia independente de apoio Ã  pesquisa; sem intermediaÃ§Ã£o de reservas ou pagamentos."
+  "observacao": "Base de referências públicas de hospedagem. Disponibilidade, valores, localização e regras devem ser confirmados na fonte original.",
+  "nomeProjeto": "Temporada PB"
 }
