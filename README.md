@@ -1,7 +1,7 @@
 # Temporada PB 🌴
 
 <p align="center">
-  <img src="./icons/temporada-pb-logo.png" alt="Temporada PB — Sugestões de hospedagem Paraíba" width="420">
+  <img src="./iconstemporada-pb-logo.png" alt="Temporada PB — Sugestões de hospedagem Paraíba" width="420">
 </p>
 
 <p align="center">
